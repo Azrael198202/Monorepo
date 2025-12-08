@@ -7,46 +7,80 @@
   <title>UnkyoTravel – 禅旅｜寺院で過ごす、心の深呼吸</title>
   <meta name="description" content="寺院での坐禅・写経・茶香体験を通じて、心と身体を整える“禅旅”を提供します。自然・文化・静けさに寄り添い、自分に還る時間を UnkyoTravel がご案内します。">
   <link rel="stylesheet" href="styles.css">
+  <!-- 下面两个 gsap 你如果不需要可以删掉 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
 </head>
 
 <body>
-  <!-- Navigation -->
-  <!-- <nav class="navbar">
-    <div class="nav-container">
-      <div class="nav-logo">禅心寺</div>
-      <ul class="nav-menu">
-        <li><a href="#home">ホーム</a></li>
-        <li><a href="#about">寺院について</a></li>
-        <li><a href="#experience">体験</a></li>
-        <li><a href="#gallery">ギャラリー</a></li>
-        <li><a href="#contact">お問い合わせ</a></li>
-      </ul>
-      <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </nav> -->
-
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-inner">
-      <!-- 顶部：Logo + 菜单 -->
+      <!-- 顶部：Logo + 右上菜单按钮 -->
       <header class="hero-top">
-        <div class="hero-logo"><img src="images/logo-main.png"></div>
-        <button class="hero-menu-btn" aria-label="Open menu">
+        <div class="hero-logo"><img src="images/logo-main.png" alt="UnkyoTravel"></div>
+        <button class="hero-menu-btn" id="heroMenuToggle" aria-label="Open menu">
           <span></span><span></span><span></span>
         </button>
       </header>
 
-      <!-- 中间：标题与按钮 -->
+      <!-- 右侧滑出的菜单面板（覆盖在 hero 上） -->
+      <!-- 全屏菜单 Overlay：左大图 + 右内容 -->
+      <div class="hero-menu-overlay" id="heroMenuOverlay" aria-hidden="true">
+        <div class="hero-menu-layout">
+          <!-- 左侧大图区域 -->
+          <div class="hero-menu-left">
+            <div class="hero-menu-left-inner">
+              <div class="hero-menu-left-caption">
+                静かなつながりをつくる
+              </div>
+              <div class="hero-menu-left-actions">
+                <button class="hero-menu-left-main">ご縁を結ぶ</button>
+                <button class="hero-menu-left-lang">English / 日本語</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 右侧白色内容区域 -->
+          <div class="hero-menu-right">
+            <button class="hero-menu-close" id="heroMenuClose" aria-label="Close menu">
+              ×
+            </button>
+
+            <div class="hero-menu-body">
+              <div class="hero-menu-logo">
+                <img src="images/logo-b.png" alt="UnkyoTravel">
+              </div>
+
+              <h2 class="hero-menu-title">お問い合わせ</h2>
+
+              <p class="hero-menu-contact">
+                <a href="mailto:hello@abcdef.com">hello@abcdef.com</a>
+              </p>
+
+              <div class="hero-menu-links">
+                <a href="#zen-trip">禅旅について</a>
+                <a href="#experience">体験と行程</a>
+                <a href="#culture">文化と仏縁</a>
+                <a href="#contact">お問い合わせ</a>
+              </div>
+
+              <div class="hero-menu-footer">
+                © 2026. All rights reserved
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- 中央标题 -->
       <div class="hero-center">
         <p class="hero-kicker">
-          寺院や山林に足を踏み入れ、静けさとゆるやかな<br/>時間の中で、あらためて自分と向き合う
+          寺院や山林に足を踏み入れ、静けさとゆるやかな<br />時間の中で、あらためて自分と向き合う
         </p>
         <h1 class="hero-title">
-          旅の途中で、心の帰る<br/>
+          旅の途中で、心の帰る<br />
           場所に出会う
         </h1>
         <div class="hero-actions">
@@ -70,8 +104,8 @@
           </div>
         </div>
 
-        <!-- 右下：视频卡片 -->
-        <a href="#" class="hero-video-card">
+        <!-- 右下：视频卡片（按钮） -->
+        <button type="button" class="hero-video-card" id="heroVideoOpen">
           <img src="images/ti.jpg" alt="Discover full video" class="hero-video-thumb" />
           <div class="hero-video-body">
             <div class="hero-video-text">
@@ -79,32 +113,119 @@
               <span class="hero-video-title">video</span>
             </div>
             <div class="hero-video-play">
-              <svg viewBox="0 0 24 24" fill="currentColor">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M8 5v14l11-7z" />
               </svg>
             </div>
           </div>
-        </a>
+        </button>
+      </div>
+
+      <!-- 点击后浮现在 hero 上的视频层 -->
+      <div class="hero-video-overlay" id="heroVideoOverlay" aria-hidden="true">
+        <div class="hero-video-dialog">
+          <button class="hero-video-close" type="button" id="heroVideoClose">
+            <span class="hero-video-close-label">Close</span>
+            <span class="hero-video-close-dots" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </span>
+          </button>
+
+          <div class="hero-video-frame">
+            <!-- 替换成你的视频路径 -->
+            <video src="videos/temple-hero.mp4" controls playsinline></video>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
+  <!-- 下面是原来的各个 section，保持不变即可 -->
   <!-- Introduction Section -->
   <section class="intro">
-    <div class="container">
-      <div class="intro-content">
-        <div class="intro-text">
-          <h2>心が落ち着くひとときを<br>世界はやさしく包まれる</h2>
-          <p>古来より受け継がれてきた禅の教えと共に、現代に生きる私たちの心に安らぎをもたらします。静寂な空間で自分自身と向き合い、日常の喧騒から離れた特別な時間をお過ごしください。</p>
-        </div>
-        <div class="intro-image">
-          <img
-            src="https://images.pexels.com/photos/35037858/pexels-photo-35037858.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-            width="433" height="650" alt="zen meditation monk">
-        </div>
+    <div class="container intro-container">
+      <header class="intro-heading">
+        <h2>
+          心がゆるやかになると<br>
+          世界はやさしく見えてくる
+        </h2>
+        <a href="#zen-trip" class="intro-heading-btn">
+          禅修の旅を紐解く
+        </a>
+      </header>
+      <article class="intro-card intro-card-poem">
+        <div class="intro-card-label">根へ・静寂へ・同じ源へ</div>
+        <p class="intro-poem">
+          現代の禅は世界を離れる道ではなく 世界の中に自らの浄土を築く道である
+        </p>
+      </article>
+
+      <!-- 卡片布局 -->
+      <div class="intro-grid">
+        <!-- 中：寻根 图片卡片 -->
+        <article class="intro-card intro-card-poster">
+          <img src="images/root.png" alt="尋根 Seeking Origin">
+        </article>
+
+        <!-- 文本卡片 01 根へ -->
+        <article class="intro-card intro-card-text">
+          <div class="intro-card-top">
+            <span class="intro-card-number">01</span>
+            <span class="card-dots" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </span>
+          </div>
+          <h3 class="intro-card-title">根へ</h3>
+          <p class="intro-card-body">
+            禅の源流をたどり、文化の根底を見つめ直す旅。<br>
+            静かに心を澄ます道は、一朝一夕ではなく千年を超えて受け継がれてきました。
+            「尋根」とは、旅であると同時に、心のふるさとへ帰る行いでもあります。
+          </p>
+        </article>
+
+        <!-- 右：坐禅の写真 -->
+        <article class="intro-card intro-card-photo">
+          <img src="images/origin.png" alt="禅僧の坐禅">
+        </article>
+
+        <!-- 下：02 静寂へ -->
+        <article class="intro-card intro-card-text">
+          <div class="intro-card-top">
+            <span class="intro-card-number">02</span>
+            <span class="card-dots" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </span>
+          </div>
+          <h3 class="intro-card-title">静寂へ</h3>
+          <p class="intro-card-body">
+            山川のあいだに身を置けば、心は静けさへと帰っていきます。
+            「静寂」は何もないことではなく、音や風、香りまでも優しく受けとめる豊かな時間。
+          </p>
+        </article>
+
+        <!-- 下：03 同じ源へ -->
+        <article class="intro-card intro-card-photo">
+          <img src="images/quiet.png" alt="同じ源">
+        </article>
+
+        <article class="intro-card intro-card-text">
+          <div class="intro-card-top">
+            <span class="intro-card-number">03</span>
+            <span class="card-dots" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+            </span>
+          </div>
+          <h3 class="intro-card-title">同じ源へ</h3>
+          <p class="intro-card-body">
+            山川は異なれど、心は通い合う。
+            「同源」とは、日々の営みも祈りも同じ流れの中にあるという気付きです。
+            旅を通じて、その源へそっと触れていきます。
+          </p>
+        </article>
       </div>
     </div>
   </section>
+
 
   <!-- Features Section -->
   <section class="features">
