@@ -182,4 +182,20 @@ document.addEventListener("DOMContentLoaded", function () {
       sec.classList.add("is-visible");
     }
   });
+
+  /* ---------- 寺院ギャラリー：ホイールで横スクロール ---------- */
+  var templeGallery = document.getElementById("templeGallery");
+  if (templeGallery) {
+    templeGallery.addEventListener(
+      "wheel",
+      function (e) {
+        // 垂直方向のスクロールを横方向に変換
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+          e.preventDefault();
+          templeGallery.scrollLeft += e.deltaY;
+        }
+      },
+      { passive: false }
+    );
+  }
 });
