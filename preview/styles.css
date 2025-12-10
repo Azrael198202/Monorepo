@@ -993,11 +993,16 @@ body.menu-open {
 
 .temples {
   background: #f5f5f5;
-  padding: 72px 0 96px;
+  padding: 32px 0 0;
+}
+
+.temples-header-container {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .temples-container {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -1007,7 +1012,6 @@ body.menu-open {
   align-items: flex-start;
   justify-content: space-between;
   gap: 32px;
-  margin-bottom: 40px;
 }
 
 .temples-title {
@@ -1035,23 +1039,33 @@ body.menu-open {
   opacity: 0.7;
 }
 
-/* 横スクロールのギャラリー */
+/* ✅ 横に全幅で伸びるラッパー（画面幅いっぱい） */
 .temple-gallery-wrapper {
+  width: 100vw;
   margin-top: 32px;
   overflow: hidden;
+  background: #f5f5f5;
 }
 
+/* ✅ 横スクロールのギャラリー本体 */
 .temple-gallery {
+  width: 100vw;
+  margin-left: 50%;
+  transform: translateX(-50%);
   display: flex;
   gap: 24px;
   overflow-x: auto;
-  padding: 8px 4px 16px;
+  padding: 8px 32px 20px;
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  cursor: grab;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* スクロールバーを目立たなくする（必要なら） */
 .temple-gallery::-webkit-scrollbar {
-  height: 6px;
+  display: none;
 }
 
 .temple-gallery::-webkit-scrollbar-thumb {
@@ -1059,38 +1073,59 @@ body.menu-open {
   border-radius: 999px;
 }
 
-/* 寺院カード */
-.temple-card {
-  position: relative;
-  width: 620px;
-  height: 620px; 
-  border-radius: 24px;
-  overflow: hidden;  /* 关键：限制图片放大不超出 */
-  flex-shrink: 0;
-  background: #ffffff;
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.25);
-  display: flex;
-  flex-direction: column;
+.temple-gallery:active {
+  cursor: grabbing;
 }
 
-.temple-card img {
+/* ✅ 寺院カード（横に並ぶ） */
+.temple-card {
+  position: relative;
+  flex: 0 0 820px;
+  /* 卡片宽度固定，横向排列 */
+  border-radius: 24px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 18px 40px #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  scroll-snap-align: start;
+  /* 与 scroll-snap 搭配 */
+}
+
+/* 上半部：图片区域，宽度自适应，高度按比例 */
+.temple-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  /* 图片区域比例：3:2，可按需要调整 */
+  overflow: hidden;
+}
+
+/* 图片设置：填满 wrap，hover 放大 */
+.temple-image-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transform: scale(1);
-  transition: transform 0.4s ease, filter 0.4s ease;
+  transition: transform 0.5s ease, filter 0.5s ease;
 }
 
-/* 右上の > ボタン */
+/* Hover 时图片在框内放大 */
+.temple-image-wrap:hover img {
+  transform: scale(1.08);
+  filter: brightness(1.03);
+}
+
+/* 右上角 > 按钮 */
 .temple-card-more {
   position: absolute;
   top: 14px;
   right: 14px;
-  width: 32px;
-  height: 32px;
+  width: 46px;
+  height: 46px;
   border-radius: 999px;
   border: none;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.2);
   color: #fff;
   font-size: 18px;
   display: flex;
@@ -1099,25 +1134,40 @@ body.menu-open {
   opacity: 0;
   transform: translateY(-6px);
   transition: opacity 0.25s ease, transform 0.25s ease;
+  cursor: pointer;
 }
 
-.temple-card-more:hover{
-  transform: scale(1.08);   /* 想更明显可以调 1.1 ～ 1.12 */
+.temple-card-more:hover {
+  transform: scale(1.08);
   filter: brightness(1.05);
 }
 
-/* hover 時の効果：画像が少し拡大 + > がふわっと出る */
-.temple-card:hover img {
-  transform: scale(1.06);
-  filter: brightness(1.03);
-}
-
+/* hover 时按钮出现 */
 .temple-card:hover .temple-card-more {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* 下の自動スクロールアイコン帯 */
+/* 下半部：日期 + 名称 */
+.temple-card-meta {
+  padding: 14px 18px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #374151;
+  background: #f9fafb;
+}
+
+.temple-card-date {
+  color: #6b7280;
+}
+
+.temple-card-name {
+  font-weight: 500;
+}
+
+/* 下方自动滚动图标带（如果有的话） */
 .temple-icons-marquee {
   margin-top: 32px;
   overflow: hidden;
@@ -1135,7 +1185,6 @@ body.menu-open {
   opacity: 0.8;
 }
 
-/* 無限スクロールアニメーション */
 @keyframes temple-icons-scroll {
   0% {
     transform: translateX(0);
@@ -1146,13 +1195,8 @@ body.menu-open {
   }
 }
 
-/* レスポンシブ */
+/* 🔁 レスポンシブ：スマホ時はカードを少し小さく */
 @media (max-width: 900px) {
-  .stats-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    row-gap: 24px;
-  }
-
   .temples-header {
     flex-direction: column;
     align-items: flex-start;
@@ -1163,11 +1207,630 @@ body.menu-open {
     margin-left: 0;
   }
 
+  .temple-gallery {
+    padding: 8px 16px 20px;
+  }
+
   .temple-card {
-    min-width: 280px;
-    height: 200px;
+    flex: 0 0 80%;
+    max-width: 420px;
   }
 }
+
+/* 左右按钮的通用样式 */
+.temple-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 999px;
+  font-size: 24px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.45);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  transition: opacity 0.25s ease, background 0.25s ease;
+  backdrop-filter: blur(6px);
+  z-index: 10;
+}
+
+/* 左右位置 */
+.temple-arrow-left {
+  left: 20px;
+}
+
+.temple-arrow-right {
+  right: 20px;
+}
+
+/* Hover 时按钮更亮一点 */
+.temple-arrow:hover {
+  background: rgba(0, 0, 0, 0.65);
+}
+
+/* 鼠标移入 wrapper 时按钮出现 */
+.temple-gallery-wrapper:hover .temple-arrow {
+  opacity: 1;
+}
+
+/* ================= 卷轴 Section ================= */
+
+.scroll-section {
+  background: #f5f5f5;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.scroll-frame {
+  width: 100vw;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(to bottom,
+      #fdfcf7 0%,
+      #f7f3e8 50%,
+      #fdfcf7 100%);
+
+  border-left: 2px solid #bfa46a;
+  border-right: 2px solid #bfa46a;
+}
+
+/* 中间的“卷轴内容区域” */
+.scroll-inner {
+  position: relative;
+  width: 70%;
+  height: 95%;
+  border-radius: 20px;
+  overflow: hidden;
+  background-image: url("images/monkhouse.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transform-origin: center center;
+  transform: scaleX(0);
+  /* 初始收起，方便做展开动画 */
+}
+
+/* 展开动画 */
+.scroll-section.is-open .scroll-inner {
+  animation: scroll-unroll 1s ease-out forwards;
+}
+
+/* 文字 + 按钮叠加层 */
+.scroll-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+  padding: 0 40px;
+
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition-delay: 0.7s;
+  /* 卷轴展开后再淡入 */
+}
+
+.scroll-section.is-open .scroll-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-heading {
+  font-family: "Noto Serif JP", "Hiragino Mincho ProN", serif;
+  font-size: 28px;
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+/* 按钮样式 */
+.scroll-cta {
+  border: none;
+  border-radius: 999px;
+  padding: 10px 30px;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  background: rgba(255, 255, 255, 0.95);
+  color: #1f2933;
+  cursor: pointer;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scroll-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+}
+
+/* 点击时的“光圈”动画 */
+.scroll-cta.is-pulse {
+  animation: scroll-cta-pulse 0.7s ease-out;
+}
+
+/* 卷轴展开 keyframes */
+@keyframes scroll-unroll {
+  0% {
+    transform: scaleX(0);
+  }
+
+  55% {
+    transform: scaleX(1.05);
+  }
+
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* 按钮光圈 keyframes */
+@keyframes scroll-cta-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+  }
+
+  40% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 12px rgba(255, 255, 255, 0.35);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+  }
+}
+
+/* 响应式稍微缩小字 */
+@media (max-width: 768px) {
+  .scroll-section {
+    padding: 60px 0;
+  }
+
+  .scroll-frame {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .scroll-heading {
+    font-size: 22px;
+  }
+
+  .scroll-overlay {
+    padding: 0 20px;
+  }
+}
+
+/* ====== Events Section ====== */
+
+.events-section {
+  padding: 40px 0;
+  background: #f5f5f5;
+  /* 和截图一样的浅灰背景，如有冲突可删 */
+}
+
+.events-container {
+  width: 70vw;
+  margin: 0 auto;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: 2.6fr 1.2fr;
+  gap: 24px;
+}
+
+/* 左侧大卡片 */
+
+.event-feature-card {
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.event-feature-media {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #000;
+}
+
+.event-feature-media img {
+  width: 100%;
+  height: 100%;
+  max-height: 600px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s ease;
+}
+
+/* hover 时图片微放大一点 */
+.event-feature-card:hover img {
+  transform: scale(1.05);
+}
+
+/* 日期胶囊 */
+.event-date-pill {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* 底部文字 + 按钮 */
+.event-feature-footer {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.1),
+      transparent);
+}
+
+.event-feature-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* 右侧圆形按钮 */
+.event-feature-more {
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: none;
+  background: #ffffff;
+  color: #111111;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-feature-more span {
+  transform: translateX(1px);
+}
+
+.event-feature-more:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* 左侧大图 — 说明文字 */
+.event-feature-text-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.event-feature-desc {
+  font-size: 13px;
+  /* 小一点的文字 */
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* 右侧列表 — 说明文字缩小 */
+.event-item-desc {
+  font-size: 13px;
+  /* 小一点 */
+  color: #555;
+  margin-top: 4px;
+  line-height: 1.45;
+}
+
+/* 右侧列表最底部 “更多” 按钮 */
+.event-list-more {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.event-more-link {
+  color: #1e1e1e;
+  font-size: 14px;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: color 0.2s ease;
+}
+
+.event-more-link:hover {
+  color: #555;
+}
+
+/* 右侧列表 */
+
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.event-item-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.04);
+}
+
+.event-item-icon {
+  width: 24px;
+  flex-shrink: 0;
+  font-size: 18px;
+  color: #999999;
+}
+
+.event-item-body {
+  flex: 1;
+}
+
+.event-item-date {
+  font-size: 12px;
+  color: #666666;
+  margin-bottom: 6px;
+}
+
+.event-item-title {
+  font-size: 16px;
+  margin: 0;
+  color: #111111;
+}
+
+/* 列表右侧圆形按钮 */
+
+.event-item-more {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: none;
+  background: #000000;
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-item-more span {
+  transform: translateX(1px);
+}
+
+.event-item-card:hover .event-item-more {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+/* ====== 响应式：窄屏改成上下布局 ====== */
+
+@media (max-width: 1300px) {
+  .events-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .event-feature-media img {
+    max-height: 360px;
+  }
+}
+
+/* =========================
+ * 禅旅の法師たち Section
+ * ========================= */
+
+.masters-section {
+  position: relative;
+  min-height: 100vh;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+/* 背景图填充整屏 */
+.masters-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("images/v2.jpg");
+  /* 换成你的背景图 */
+  background-size: cover;
+  background-position: center center;
+  filter: brightness(0.5);
+  z-index: 1;
+}
+
+/* 内容层 */
+.masters-inner {
+  position: relative;
+  z-index: 2;
+  width: min(1120px, 92vw);
+  margin: 0 auto;
+  padding: 80px 0 96px;
+}
+
+/* 标题区域 */
+.masters-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.masters-title {
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+}
+
+.masters-lead {
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* 白板区域：卡片随意分布 */
+.masters-board {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  /* 控制卡片活动区域的高度 */
+}
+
+/* 通用卡片样式 */
+.master-card {
+  position: absolute;
+  width: 400px;
+  height: 200px;
+  padding: 16px 18px 18px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #111827;
+  border-radius: 18px;
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.25);
+  backdrop-filter: blur(6px);
+  transform-origin: center;
+}
+
+/* 头部：头像 + 名称 + 标签 */
+.master-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.master-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 999px;
+  border: 3px solid #fff; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  object-fit: cover;
+}
+
+.master-meta {
+  flex: 1;
+}
+
+.master-name {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.master-role {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.master-tag {
+  font-size: 14px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #111827;
+  color: #f9fafb;
+}
+
+/* 感悟文字 */
+.master-quote {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+  color: #374151;
+}
+
+/* 随机贴纸效果：位置 + 旋转 */
+.master-card-1 {
+  top: 10px;
+  left: 4%;
+  transform: rotate(-3deg);
+}
+
+.master-card-2 {
+  top: 40px;
+  right: 6%;
+  transform: rotate(2deg);
+}
+
+.master-card-3 {
+  top: 200px;
+  left: 34%;
+  transform: rotate(-1deg);
+}
+
+.master-card-4 {
+  top: 400px;
+  left: 14%;
+  transform: rotate(3deg);
+}
+
+.master-card-5 {
+  top: 420px;
+  right: 12%;
+  transform: rotate(-4deg);
+}
+
+/* hover 时稍微浮起来一点，像贴纸被轻轻拨动 */
+.master-card:hover {
+  transform: translateY(-4px) scale(1.01) rotate(0deg);
+  box-shadow: 0 24px 40px rgba(15, 23, 42, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* 响应式：小屏幕时改成普通纵向排列 */
+@media (max-width: 900px) {
+  .masters-section {
+    min-height: auto;
+  }
+
+  .masters-inner {
+    padding: 64px 0 72px;
+  }
+
+  .masters-board {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .master-card {
+    position: static;
+    width: 100%;
+    transform: none !important;
+  }
+}
+
+
 
 
 
@@ -1212,74 +1875,7 @@ body.menu-open {
   line-height: 1.6;
 }
 
-/* Temple Gallery */
-.temple-gallery {
-  padding: 100px 0;
-  background: #f8f8f8;
-}
 
-.temple-gallery h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 60px;
-  color: #2c3e50;
-  font-weight: 300;
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 20px;
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
-}
-
-.gallery-item img:hover {
-  transform: scale(1.05);
-}
-
-/* Meditation Section */
-.meditation-section {
-  padding: 100px 0;
-  background: #2c3e50;
-  color: white;
-}
-
-.meditation-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-}
-
-.meditation-image img {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.meditation-text h2 {
-  font-size: 2.2rem;
-  margin-bottom: 30px;
-  font-weight: 300;
-  line-height: 1.3;
-}
-
-.meditation-text p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  opacity: 0.9;
-}
 
 /* Tea Ceremony Section */
 .tea-ceremony {
@@ -1446,6 +2042,7 @@ body.menu-open {
 .bottom-gallery {
   padding: 100px 0;
   background: #f8f8f8;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .bottom-gallery h2 {
@@ -1479,216 +2076,215 @@ body.menu-open {
   color: #2c3e50;
 }
 
-/* Final CTA */
-.final-cta {
-  padding: 100px 0;
-  background: #8b4513;
-  color: white;
+.page-top-layer {
+  position: relative;
+  z-index: 4;
+  /* 在 footer 上面 */
+  background: #f5f5f5;
+  /* 你现在内容区背景色 */
+  transform: translateY(0);
+  transition: transform 0.2s linear;
+  /* 平滑上拉 */
+}
+
+.page-top-layer.curtain-up {
+  margin-bottom: 0px;
+}
+
+
+/* ============ Footer Hero 基本布局 ============ */
+.footer-hero {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  color: #f9fafb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  z-index: 1;
+  margin-bottom: -1200px;
+}
+
+/* 背景图层 */
+.footer-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url("images/footer.jpg");
+  background-repeat: no-repeat;
+  background-size: auto 66%;
+  background-position: center top;
+  transform: scale(1.05);
+  filter: brightness(0.95);
+  transition: transform 1.2s ease, filter 1.2s ease, opacity 0.8s ease;
+  opacity: 0;
+}
+
+/* 内容容器 */
+.footer-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 32px 32px;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* 顶部 Logo */
+.footer-hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+}
+
+.footer-logo {
+  font-family: "Times New Roman", "Georgia", serif;
+  font-size: 28px;
+  letter-spacing: 0.12em;
+  color: #f9fafb;
+}
+
+.footer-logo img {
+  height: 45px;
+}
+
+/* 中央内容 */
+.footer-hero-center {
+  font-family: var(--font-family);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
+
+  opacity: 1;
+  transform: translateY(18px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.final-cta h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  font-weight: 300;
-  line-height: 1.3;
+.footer-hero-title {
+  font-size: clamp(44px, 4vw, 56px);
+  line-height: 1.2;
+  font-weight: 500;
+  margin-bottom: 16px;
 }
 
-.cta-button-large {
-  background: white;
-  color: #8b4513;
-  border: none;
-  padding: 20px 50px;
-  font-size: 1.2rem;
-  border-radius: 30px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: bold;
+.footer-hero-sub {
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  margin-bottom: 28px;
+  opacity: 0.9;
 }
 
-.cta-button-large:hover {
-  background: #f0f0f0;
+.footer-hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
+  border-radius: 999px;
+  background: #f9fafb;
+  color: #111827;
+  font-size: 13px;
+  text-decoration: none;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  transition: transform 0.18s ease, box-shadow 0.18s ease,
+    background 0.18s ease, color 0.18s ease;
+}
+
+.footer-hero-btn:hover {
   transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
 }
 
-/* Footer */
-.footer {
-  background: #2c3e50;
-  color: white;
-  padding: 60px 0 20px;
+/* 底部区域 */
+.footer-hero-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-family);
+  font-size: 16px;
+  color: #e5e7eb;
+  gap: 12px;
+  opacity: 1;
+  transform: translateY(12px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-.footer-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
-  margin-bottom: 40px;
-}
-
-.footer-info h3 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-}
-
-.footer-info p {
-  margin-bottom: 10px;
+.footer-copy {
   opacity: 0.8;
 }
 
-.footer-links h4 {
-  font-size: 1.2rem;
-  margin-bottom: 20px;
+.footer-bottom-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
-.footer-links ul {
-  list-style: none;
-}
-
-.footer-links ul li {
-  margin-bottom: 10px;
-}
-
-.footer-links ul li a {
-  color: white;
+.footer-bottom-links a {
+  color: #e5e7eb;
   text-decoration: none;
   opacity: 0.8;
-  transition: opacity 0.3s ease;
+  position: relative;
+  padding-bottom: 2px;
+  transition: opacity 0.18s ease;
 }
 
-.footer-links ul li a:hover {
+.footer-bottom-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: rgba(249, 250, 251, 0.9);
+  transition: width 0.22s ease;
+}
+
+.footer-bottom-links a:hover {
   opacity: 1;
 }
 
-.footer-bottom {
-  text-align: center;
-  padding-top: 20px;
-  border-top: 1px solid #34495e;
-  opacity: 0.6;
+.footer-bottom-links a:hover::after {
+  width: 100%;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .nav-menu {
-    position: fixed;
-    left: -100%;
-    top: 70px;
-    flex-direction: column;
-    background-color: white;
-    width: 100%;
-    text-align: center;
-    transition: 0.3s;
-    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-    padding: 20px 0;
-  }
+/* ============ 进入视口时的动画状态（由 JS 加 .is-visible） ============ */
 
-  .nav-menu.active {
-    left: 0;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-
-  .hamburger.active span:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger.active span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .hamburger.active span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-
-  .hero-content h1 {
-    font-size: 2.5rem;
-  }
-
-  .intro-content,
-  .meditation-content,
-  .tea-content {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .meditation-content .meditation-image {
-    order: -1;
-  }
-
-  .features-grid,
-  .philosophy-content {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .programs-list {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery-grid-bottom {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .container {
-    padding: 0 15px;
-  }
-
-  section {
-    padding: 60px 0;
-  }
-
-  .intro,
-  .features,
-  .temple-gallery,
-  .meditation-section,
-  .tea-ceremony,
-  .philosophy,
-  .programs,
-  .final-section,
-  .bottom-gallery,
-  .final-cta {
-    padding: 60px 0;
-  }
+.footer-hero.is-visible .footer-hero-bg {
+  opacity: 1;
+  transform: scale(1.02);
+  filter: brightness(0.4);
 }
 
-@media (max-width: 480px) {
-  .hero-content h1 {
-    font-size: 2rem;
-  }
-
-  .intro-text h2,
-  .temple-gallery h2,
-  .meditation-text h2,
-  .philosophy h2,
-  .programs h2,
-  .final-content h2,
-  .bottom-gallery h2,
-  .final-cta h2 {
-    font-size: 1.8rem;
-  }
-
-  .gallery-grid-bottom {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Animation classes */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease;
-}
-
-.fade-in.visible {
+.footer-hero.is-visible .footer-hero-center {
   opacity: 1;
   transform: translateY(0);
+}
+
+.footer-hero.is-visible .footer-hero-bottom {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============ 响应式 ============ */
+
+@media (max-width: 768px) {
+  .footer-hero-inner {
+    padding-inline: 20px;
+  }
+
+  .footer-hero-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 4px;
+  }
+
+  .footer-logo {
+    font-size: 22px;
+  }
 }

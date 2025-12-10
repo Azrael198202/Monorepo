@@ -13,625 +13,761 @@
 </head>
 
 <body>
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-inner">
-      <!-- 顶部：Logo + 右上菜单按钮 -->
-      <header class="hero-top">
-        <div class="hero-logo"><img src="images/logo-main.png" alt="UnkyoTravel"></div>
-        <button class="hero-menu-btn" id="heroMenuToggle" aria-label="Open menu">
-          <span></span><span></span><span></span>
-        </button>
-      </header>
 
-      <!-- 右侧滑出的菜单面板（覆盖在 hero 上） -->
-      <!-- 全屏菜单 Overlay：左大图 + 右内容 -->
-      <div class="hero-menu-overlay" id="heroMenuOverlay" aria-hidden="true">
-        <div class="hero-menu-layout">
-          <!-- 左侧大图区域 -->
-          <div class="hero-menu-left">
-            <div class="hero-menu-left-inner">
-              <div class="hero-menu-left-caption">
-                静かなつながりをつくる
-              </div>
-              <div class="hero-menu-left-actions">
-                <button class="hero-menu-left-main">ご縁を結ぶ</button>
-                <button class="hero-menu-left-lang">English / 日本語</button>
-              </div>
-            </div>
-          </div>
-
-          <!-- 右侧白色内容区域 -->
-          <div class="hero-menu-right">
-            <button class="hero-menu-close" id="heroMenuClose" aria-label="Close menu">
-              ×
-            </button>
-
-            <div class="hero-menu-body">
-              <div class="hero-menu-logo">
-                <img src="images/logo-b.png" alt="UnkyoTravel">
-              </div>
-
-              <h2 class="hero-menu-title">お問い合わせ</h2>
-
-              <p class="hero-menu-contact">
-                <a href="mailto:hello@abcdef.com">hello@abcdef.com</a>
-              </p>
-
-              <div class="hero-menu-links">
-                <a href="#zen-trip">禅旅について</a>
-                <a href="#experience">体験と行程</a>
-                <a href="#culture">文化と仏縁</a>
-                <a href="#contact">お問い合わせ</a>
-              </div>
-
-              <div class="hero-menu-footer">
-                © 2026. All rights reserved
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- 中央标题 -->
-      <div class="hero-center">
-        <p class="hero-kicker">
-          寺院や山林に足を踏み入れ、静けさとゆるやかな<br />時間の中で、あらためて自分と向き合う
-        </p>
-        <h1 class="hero-title">
-          旅の途中で、心の帰る<br />
-          場所に出会う
-        </h1>
-        <div class="hero-actions">
-          <a href="#contact" class="hero-btn hero-btn-primary">観光ルートのご相談</a>
-          <a href="#zen-trip" class="hero-btn hero-btn-secondary">禅修の旅を紐解く</a>
-        </div>
-      </div>
-
-      <!-- 底部：左侧信赖人数，右侧视频卡片 -->
-      <div class="hero-bottom">
-        <!-- 左下：Trusted by -->
-        <div class="hero-trust">
-          <div class="hero-avatars">
-            <img src="images/0.png" alt="" />
-            <img src="images/0.png" alt="" />
-            <img src="images/0.png" alt="" />
-          </div>
-          <div class="hero-trust-text">
-            <span>Trusted by</span>
-            <span>over 10K<br />people</span>
-          </div>
-        </div>
-
-        <!-- 右下：视频卡片（按钮） -->
-        <button type="button" class="hero-video-card" id="heroVideoOpen">
-          <img src="images/ti.jpg" alt="Discover full video" class="hero-video-thumb" />
-          <div class="hero-video-body">
-            <div class="hero-video-text">
-              <span class="hero-video-label">Discover full</span>
-              <span class="hero-video-title">video</span>
-            </div>
-            <div class="hero-video-play">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-          </div>
-        </button>
-      </div>
-
-      <!-- 点击后浮现在 hero 上的视频层 -->
-      <div class="hero-video-overlay" id="heroVideoOverlay" aria-hidden="true">
-        <div class="hero-video-dialog">
-          <button class="hero-video-close" type="button" id="heroVideoClose">
-            <span class="hero-video-close-label">Close</span>
-            <span class="hero-video-close-dots" aria-hidden="true">
-              <span></span><span></span><span></span><span></span>
-            </span>
+  <div class="page-top-layer">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-inner">
+        <!-- 顶部：Logo + 右上菜单按钮 -->
+        <header class="hero-top">
+          <div class="hero-logo"><img src="images/logo-main.png" alt="UnkyoTravel"></div>
+          <button class="hero-menu-btn" id="heroMenuToggle" aria-label="Open menu">
+            <span></span><span></span><span></span>
           </button>
+        </header>
 
-          <div class="hero-video-frame">
-            <!-- 替换成你的视频路径 -->
-            <video src="videos/temple-hero.mp4" controls playsinline></video>
+        <!-- 右侧滑出的菜单面板（覆盖在 hero 上） -->
+        <!-- 全屏菜单 Overlay：左大图 + 右内容 -->
+        <div class="hero-menu-overlay" id="heroMenuOverlay" aria-hidden="true">
+          <div class="hero-menu-layout">
+            <!-- 左侧大图区域 -->
+            <div class="hero-menu-left">
+              <div class="hero-menu-left-inner">
+                <div class="hero-menu-left-caption">
+                  静かなつながりをつくる
+                </div>
+                <div class="hero-menu-left-actions">
+                  <button class="hero-menu-left-main">ご縁を結ぶ</button>
+                  <button class="hero-menu-left-lang">English / 日本語</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 右侧白色内容区域 -->
+            <div class="hero-menu-right">
+              <button class="hero-menu-close" id="heroMenuClose" aria-label="Close menu">
+                ×
+              </button>
+
+              <div class="hero-menu-body">
+                <div class="hero-menu-logo">
+                  <img src="images/logo-b.png" alt="UnkyoTravel">
+                </div>
+
+                <h2 class="hero-menu-title">お問い合わせ</h2>
+
+                <p class="hero-menu-contact">
+                  <a href="mailto:hello@abcdef.com">hello@abcdef.com</a>
+                </p>
+
+                <div class="hero-menu-links">
+                  <a href="#zen-trip">禅旅について</a>
+                  <a href="#experience">体験と行程</a>
+                  <a href="#culture">文化と仏縁</a>
+                  <a href="#contact">お問い合わせ</a>
+                </div>
+
+                <div class="hero-menu-footer">
+                  © 2026. All rights reserved
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- 中央标题 -->
+        <div class="hero-center">
+          <p class="hero-kicker">
+            寺院や山林に足を踏み入れ、静けさとゆるやかな<br />時間の中で、あらためて自分と向き合う
+          </p>
+          <h1 class="hero-title">
+            旅の途中で、心の帰る<br />
+            場所に出会う
+          </h1>
+          <div class="hero-actions">
+            <a href="#contact" class="hero-btn hero-btn-primary">観光ルートのご相談</a>
+            <a href="#zen-trip" class="hero-btn hero-btn-secondary">禅修の旅を紐解く</a>
+          </div>
+        </div>
+
+        <!-- 底部：左侧信赖人数，右侧视频卡片 -->
+        <div class="hero-bottom">
+          <!-- 左下：Trusted by -->
+          <div class="hero-trust">
+            <div class="hero-avatars">
+              <img src="images/0.png" alt="" />
+              <img src="images/0.png" alt="" />
+              <img src="images/0.png" alt="" />
+            </div>
+            <div class="hero-trust-text">
+              <span>Trusted by</span>
+              <span>over 10K<br />people</span>
+            </div>
+          </div>
+
+          <!-- 右下：视频卡片（按钮） -->
+          <button type="button" class="hero-video-card" id="heroVideoOpen">
+            <img src="images/ti.jpg" alt="Discover full video" class="hero-video-thumb" />
+            <div class="hero-video-body">
+              <div class="hero-video-text">
+                <span class="hero-video-label">Discover full</span>
+                <span class="hero-video-title">video</span>
+              </div>
+              <div class="hero-video-play">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </div>
+          </button>
+        </div>
+
+        <!-- 点击后浮现在 hero 上的视频层 -->
+        <div class="hero-video-overlay" id="heroVideoOverlay" aria-hidden="true">
+          <div class="hero-video-dialog">
+            <button class="hero-video-close" type="button" id="heroVideoClose">
+              <span class="hero-video-close-label">Close</span>
+              <span class="hero-video-close-dots" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+              </span>
+            </button>
+
+            <div class="hero-video-frame">
+              <!-- 替换成你的视频路径 -->
+              <video src="videos/temple-hero.mp4" controls playsinline></video>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 下面是原来的各个 section，保持不变即可 -->
-  <!-- Introduction Section -->
-  <section class="intro">
-    <div class="container intro-container">
-      <header class="intro-heading">
-        <h2>
-          心がゆるやかになると<br>
-          世界はやさしく見えてくる
-        </h2>
-        <a href="#zen-trip" class="intro-heading-btn">
-          禅修の旅を紐解く
-        </a>
-      </header>
-      <article class="intro-card intro-card-poem">
-        <div class="intro-card-label">根へ・静寂へ・同じ源へ</div>
-        <p class="intro-poem">
-          現代の禅は世界を離れる道ではなく 世界の中に自らの浄土を築く道である
-        </p>
-      </article>
-
-      <!-- 卡片布局 -->
-      <div class="intro-grid">
-        <!-- 中：寻根 图片卡片 -->
-        <article class="intro-card intro-card-poster">
-          <img src="images/root.png" alt="尋根 Seeking Origin">
-        </article>
-
-        <!-- 文本卡片 01 根へ -->
-        <article class="intro-card intro-card-text">
-          <div class="intro-card-top">
-            <span class="intro-card-number">01</span>
-            <span class="card-dots" aria-hidden="true">
-              <span></span><span></span><span></span><span></span>
-            </span>
-          </div>
-          <h3 class="intro-card-title">根へ</h3>
-          <p class="intro-card-body">
-            禅の源流をたどり、文化の根底を見つめ直す旅。<br>
-            静かに心を澄ます道は、一朝一夕ではなく千年を超えて受け継がれてきました。
-            「尋根」とは、旅であると同時に、心のふるさとへ帰る行いでもあります。
+    <!-- 下面是原来的各个 section，保持不变即可 -->
+    <!-- Introduction Section -->
+    <section class="intro">
+      <div class="container intro-container">
+        <header class="intro-heading">
+          <h2>
+            心がゆるやかになると<br>
+            世界はやさしく見えてくる
+          </h2>
+          <a href="#zen-trip" class="intro-heading-btn">
+            禅修の旅を紐解く
+          </a>
+        </header>
+        <article class="intro-card intro-card-poem">
+          <div class="intro-card-label">根へ・静寂へ・同じ源へ</div>
+          <p class="intro-poem">
+            現代の禅は世界を離れる道ではなく 世界の中に自らの浄土を築く道である
           </p>
         </article>
 
-        <!-- 右：坐禅の写真 -->
-        <article class="intro-card intro-card-photo">
-          <img src="images/origin.png" alt="禅僧の坐禅">
-        </article>
+        <!-- 卡片布局 -->
+        <div class="intro-grid">
+          <!-- 中：寻根 图片卡片 -->
+          <article class="intro-card intro-card-poster">
+            <img src="images/root.png" alt="尋根 Seeking Origin">
+          </article>
 
-        <!-- 下：02 静寂へ -->
-        <article class="intro-card intro-card-text">
-          <div class="intro-card-top">
-            <span class="intro-card-number">02</span>
-            <span class="card-dots" aria-hidden="true">
-              <span></span><span></span><span></span><span></span>
-            </span>
+          <!-- 文本卡片 01 根へ -->
+          <article class="intro-card intro-card-text">
+            <div class="intro-card-top">
+              <span class="intro-card-number">01</span>
+              <span class="card-dots" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+              </span>
+            </div>
+            <h3 class="intro-card-title">根へ</h3>
+            <p class="intro-card-body">
+              禅の源流をたどり、文化の根底を見つめ直す旅。<br>
+              静かに心を澄ます道は、一朝一夕ではなく千年を超えて受け継がれてきました。
+              「尋根」とは、旅であると同時に、心のふるさとへ帰る行いでもあります。
+            </p>
+          </article>
+
+          <!-- 右：坐禅の写真 -->
+          <article class="intro-card intro-card-photo">
+            <img src="images/origin.png" alt="禅僧の坐禅">
+          </article>
+
+          <!-- 下：02 静寂へ -->
+          <article class="intro-card intro-card-text">
+            <div class="intro-card-top">
+              <span class="intro-card-number">02</span>
+              <span class="card-dots" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+              </span>
+            </div>
+            <h3 class="intro-card-title">静寂へ</h3>
+            <p class="intro-card-body">
+              山川のあいだに身を置けば、心は静けさへと帰っていきます。
+              「静寂」は何もないことではなく、音や風、香りまでも優しく受けとめる豊かな時間。
+            </p>
+          </article>
+
+          <!-- 下：03 同じ源へ -->
+          <article class="intro-card intro-card-photo">
+            <img src="images/quiet.png" alt="同じ源">
+          </article>
+
+          <article class="intro-card intro-card-text">
+            <div class="intro-card-top">
+              <span class="intro-card-number">03</span>
+              <span class="card-dots" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+              </span>
+            </div>
+            <h3 class="intro-card-title">同じ源へ</h3>
+            <p class="intro-card-body">
+              山川は異なれど、心は通い合う。
+              「同源」とは、日々の営みも祈りも同じ流れの中にあるという気付きです。
+              旅を通じて、その源へそっと触れていきます。
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 参加度・再参加などの統計 -->
+    <section class="stats">
+      <div class="container stats-container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-value">95%</div>
+            <div class="stat-label">参加者の満足度</div>
           </div>
-          <h3 class="intro-card-title">静寂へ</h3>
-          <p class="intro-card-body">
-            山川のあいだに身を置けば、心は静けさへと帰っていきます。
-            「静寂」は何もないことではなく、音や風、香りまでも優しく受けとめる豊かな時間。
+          <div class="stat-item">
+            <div class="stat-value">20+</div>
+            <div class="stat-label">体験プログラム数</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">70%</div>
+            <div class="stat-label">再参加率</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-value">10,000+</div>
+            <div class="stat-label">年間体験者数</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 禅旅の寺院セクション -->
+    <section class="temples" id="temples">
+      <div class="container temples-header-container">
+        <!-- 見出し + 説明 -->
+        <div class="temples-header">
+          <h2 class="temples-title">禅旅の寺院</h2>
+          <div class="temples-description">
+            <p>
+              禅旅の寺院は、静けさと調和が息づく場所です。<br>
+              古来より伝わる修行の空気の中で、<br>
+              心を整え、呼吸をゆるめ、日常からそっと離れる時間を過ごします。
+            </p>
+            <div class="temples-symbol">
+              <!-- 中央の小さなアイコン（任意の画像でOK） -->
+              <img src="images/1-1.png" alt="" />
+              <img src="images/2-1.png" alt="" />
+              <img src="images/3-1.png" alt="" />
+              <img src="images/4-1.png" alt="" />
+              <img src="images/5-1.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container temples-container">
+        <!-- 横スクロールの寺院ギャラリー -->
+        <div class="temple-gallery temples-container" id="templeGallery">
+          <div class="temple-gallery-wrapper">
+            <button class="temple-arrow temple-arrow-left" aria-label="左へ">
+              &#10094;
+            </button>
+
+            <div class="temple-gallery">
+              <!-- 1 -->
+              <article class="temple-card">
+                <div class="temple-image-wrap">
+                  <img src="images/江苏扬州 大明寺1.webp" alt="江苏扬州・大明寺" />
+                  <button class="temple-card-more" aria-label="詳細を見る">&gt;</button>
+                </div>
+
+                <div class="temple-card-meta">
+                  <span class="temple-card-date">2025/11/25</span>
+                  <span class="temple-card-name">江苏扬州・大明寺</span>
+                </div>
+              </article>
+
+              <!-- 2 -->
+              <article class="temple-card">
+                <div class="temple-image-wrap">
+                  <img src="images/国清寺1.jpg" alt="浙江天台・国清寺" />
+                  <button class="temple-card-more" aria-label="詳細を見る">
+                    &gt;
+                  </button>
+                </div>
+                <div class="temple-card-meta">
+                  <span class="temple-card-date">2025/06/11</span>
+                  <span class="temple-card-name">浙江天台・国清寺</span>
+                </div>
+              </article>
+
+              <!-- 3 -->
+              <article class="temple-card">
+                <div class="temple-image-wrap">
+                  <img src="images/灵隐寺.jpg" alt="浙江杭州・霊隠寺" />
+                  <button class="temple-card-more" aria-label="詳細を見る">
+                    &gt;
+                  </button>
+                </div>
+                <div class="temple-card-meta">
+                  <span class="temple-card-date">2025/xx/xx</span>
+                  <span class="temple-card-name">浙江杭州・霊隠寺</span>
+                </div>
+              </article>
+
+              <!-- 4 -->
+              <article class="temple-card">
+                <div class="temple-image-wrap">
+                  <img src="images/鸡鸣寺1.jpg" alt="江蘇南京・古鶏鳴寺" />
+                  <button class="temple-card-more" aria-label="詳細を見る">
+                    &gt;
+                  </button>
+                </div>
+                <div class="temple-card-meta">
+                  <span class="temple-card-date">2025/xx/xx</span>
+                  <span class="temple-card-name">江蘇南京・古鶏鳴寺</span>
+                </div>
+              </article>
+            </div>
+            <button class="temple-arrow temple-arrow-right" aria-label="右へ">
+              &#10095;
+            </button>
+          </div>
+    </section>
+
+    <section class="scroll-section reveal-section" id="zen-scroll">
+      <div class="scroll-frame">
+        <!-- 卷轴中间的图片区域 -->
+        <div class="scroll-inner">
+          <div class="scroll-overlay">
+            <h2 class="scroll-heading">
+              心静かに、時空を超えて。<br>
+              今すぐ体験を始めませんか？
+            </h2>
+            <button class="scroll-cta">
+              体験を始める
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="events-section">
+      <div class="events-container">
+
+        <header class="intro-heading">
+          <h2>仏教行事一覧</h2>
+          <a href="#zen-trip" class="intro-heading-btn">
+            法会をもっと見る
+          </a>
+        </header>
+
+        <div class="events-grid">
+
+          <!-- 左侧：大图卡片 -->
+          <article class="event-feature-card">
+            <div class="event-feature-media">
+              <img src="images/fashi.jpg" alt="中国仏教界・海上シルクロード巡礼航海">
+
+              <div class="event-date-pill">2026/06/19</div>
+
+              <div class="event-feature-footer">
+                <div class="event-feature-text-block">
+                  <h3 class="event-feature-title">中国仏教界・海上シルクロード巡礼航海</h3>
+                  <p class="event-feature-desc">
+                    中国仏教界が初めて大規模に実施する海上巡礼・文化交流の航海イベント。
+                  </p>
+                </div>
+                <button class="event-feature-more" aria-label="詳細を見る">
+                  <span>›</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- 右侧：列表卡片 -->
+          <div class="event-list">
+
+            <article class="event-item-card">
+              <div class="event-item-body">
+                <div class="event-item-date">
+                  <span class="card-dots" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                  </span>
+                  <span>2026/06/18</span>
+                </div>
+                <h4 class="event-item-title">全国仏教文化フォーラム</h4>
+                <p class="event-item-desc">仏教文化・歴史研究・国際交流をテーマとした全国規模のフォーラム。</p>
+              </div>
+              <button class="event-item-more" aria-label="詳細を見る">
+                <span>›</span>
+              </button>
+            </article>
+
+            <article class="event-item-card">
+              <div class="event-item-body">
+                <div class="event-item-date">
+                  <span class="card-dots" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                  </span>
+                  <span>2026　春</span>
+                </div>
+                <h4 class="event-item-title">天台宗・国清寺 禅修週間</h4>
+                <p class="event-item-desc">天台宗の総本山で行われる禅修・戒律研修プログラム。</p>
+              </div>
+              <button class="event-item-more" aria-label="詳細を見る">
+                <span>›</span>
+              </button>
+            </article>
+
+            <article class="event-item-card">
+              <div class="event-item-body">
+                <div class="event-item-date">
+                  <span class="card-dots" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                  </span>
+                  <span>2026　夏</span>
+                </div>
+                <h4 class="event-item-title">普陀山・観音文化祭</h4>
+                <p class="event-item-desc">観音信仰・巡礼行事・水陸法会などを含む年間最大規模の祭典。</p>
+              </div>
+              <button class="event-item-more" aria-label="詳細を見る">
+                <span>›</span>
+              </button>
+            </article>
+
+            <article class="event-item-card">
+
+              <div class="event-item-body">
+                <div class="event-item-date">
+                  <span class="card-dots" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                  </span>
+                  <span>2026</span>
+                </div>
+                <h4 class="event-item-title">五台山・観音法会</h4>
+                <p class="event-item-desc">五台山で開催される大規模な仏教祈祷・講経・巡礼行事。</p>
+              </div>
+              <button class="event-item-more" aria-label="詳細を見る">
+                <span>›</span>
+              </button>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 禅旅の法師たち Section -->
+    <section class="masters-section" id="masters">
+      <!-- 背景图层 -->
+      <div class="masters-bg"></div>
+
+      <!-- 内容层 -->
+      <div class="masters-inner">
+        <!-- 标题 -->
+        <header class="masters-header">
+          <h2 class="masters-title">禅旅：それは一度きりの旅ではない</h2>
+          <p class="masters-lead">
+            この旅は、心の声に耳を澄ませる時間です。<br />
+            静けさに身をゆだね、自分自身と向き合うひとときを。
           </p>
-        </article>
+        </header>
 
-        <!-- 下：03 同じ源へ -->
-        <article class="intro-card intro-card-photo">
-          <img src="images/quiet.png" alt="同じ源">
-        </article>
+        <!-- 白板区域：随机散落的卡片 -->
+        <div class="masters-board">
+          <!-- 卡片 1 -->
+          <article class="master-card master-card-1">
+            <div class="master-card-header">
+              <img class="master-avatar" src="images/chanshi.webp" alt="法師1" />
+              <div class="master-meta">
+                <div class="master-name">慧心</div>
+                <div class="master-role">寺院住職</div>
+              </div>
+              <span class="master-tag">随縁</span>
+            </div>
+            <p class="master-quote">
+              一息一息が、新しい自分への扉となります。
+            </p>
+          </article>
 
-        <article class="intro-card intro-card-text">
-          <div class="intro-card-top">
-            <span class="intro-card-number">03</span>
-            <span class="card-dots" aria-hidden="true">
-              <span></span><span></span><span></span><span></span>
-            </span>
-          </div>
-          <h3 class="intro-card-title">同じ源へ</h3>
-          <p class="intro-card-body">
-            山川は異なれど、心は通い合う。
-            「同源」とは、日々の営みも祈りも同じ流れの中にあるという気付きです。
-            旅を通じて、その源へそっと触れていきます。
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
+          <!-- 卡片 2 -->
+          <article class="master-card master-card-2">
+            <div class="master-card-header">
+              <img class="master-avatar" src="images/chanshi.webp" alt="法師2" />
+              <div class="master-meta">
+                <div class="master-name">静源</div>
+                <div class="master-role">僧侶</div>
+              </div>
+              <span class="master-tag">随縁</span>
+            </div>
+            <p class="master-quote">
+              心が静まるとき、世界の輪郭もやさしく変わります。
+            </p>
+          </article>
 
-  <!-- 参加度・再参加などの統計 -->
-  <section class="stats">
-    <div class="container stats-container">
-      <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-value">95%</div>
-          <div class="stat-label">参加者の満足度</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">20+</div>
-          <div class="stat-label">体験プログラム数</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">70%</div>
-          <div class="stat-label">再参加率</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-value">10,000+</div>
-          <div class="stat-label">年間体験者数</div>
-        </div>
-      </div>
-    </div>
-  </section>
+          <!-- 卡片 3 -->
+          <article class="master-card master-card-3">
+            <div class="master-card-header">
+              <img class="master-avatar" src="images/chanshi.webp" alt="法師3" />
+              <div class="master-meta">
+                <div class="master-name">明照</div>
+                <div class="master-role">老師</div>
+              </div>
+              <span class="master-tag">随縁</span>
+            </div>
+            <p class="master-quote">
+              何かを足すのではなく、手放すことから始まります。
+            </p>
+          </article>
 
-  <!-- 禅旅の寺院セクション -->
-  <section class="temples" id="temples">
-    <div class="container temples-container">
-      <!-- 見出し + 説明 -->
-      <div class="temples-header">
-        <h2 class="temples-title">禅旅の寺院</h2>
-        <div class="temples-description">
-          <p>
-            禅旅の寺院は、静けさと調和が息づく場所です。<br>
-            古来より伝わる修行の空気の中で、<br>
-            心を整え、呼吸をゆるめ、日常からそっと離れる時間を過ごします。
-          </p>
-          <div class="temples-symbol">
-            <!-- 中央の小さなアイコン（任意の画像でOK） -->
-            <img src="images/1-1.png" alt="" />
-            <img src="images/2-1.png" alt="" />
-            <img src="images/3-1.png" alt="" />
-            <img src="images/4-1.png" alt="" />
-            <img src="images/5-1.png" alt="" />
-          </div>
-        </div>
-      </div>
+          <!-- 卡片 4 -->
+          <article class="master-card master-card-4">
+            <div class="master-card-header">
+              <img class="master-avatar" src="images/chanshi.webp" alt="法師4" />
+              <div class="master-meta">
+                <div class="master-name">玄空</div>
+                <div class="master-role">僧侶</div>
+              </div>
+              <span class="master-tag">随縁</span>
+            </div>
+            <p class="master-quote">
+              歩みをとめて、ただ今ここに在る自分を感じてみましょう。
+            </p>
+          </article>
 
-      <!-- 横スクロールの寺院ギャラリー -->
-      <div class="temple-gallery" id="templeGallery">
-        <!-- 1 -->
-        <article class="temple-card">
-          <div class="temple-image-wrap">
-            <img src="images/江苏扬州 大明寺1.webp" alt="江苏扬州・大明寺" />
-            <button class="temple-card-more" aria-label="詳細を見る">
-              &gt;
-            </button>
-          </div>
-          <div class="temple-card-meta">
-            <span class="temple-card-date">2025/11/25</span>
-            <span class="temple-card-name">江苏扬州・大明寺</span>
-          </div>
-        </article>
-
-        <!-- 2 -->
-        <article class="temple-card">
-          <div class="temple-image-wrap">
-            <img src="images/国清寺1.jpg" alt="浙江天台・国清寺" />
-            <button class="temple-card-more" aria-label="詳細を見る">
-              &gt;
-            </button>
-          </div>
-          <div class="temple-card-meta">
-            <span class="temple-card-date">2025/06/11</span>
-            <span class="temple-card-name">浙江天台・国清寺</span>
-          </div>
-        </article>
-
-        <!-- 3 -->
-        <article class="temple-card">
-          <div class="temple-image-wrap">
-            <img src="images/灵隐寺.jpg" alt="浙江杭州・霊隠寺" />
-            <button class="temple-card-more" aria-label="詳細を見る">
-              &gt;
-            </button>
-          </div>
-          <div class="temple-card-meta">
-            <span class="temple-card-date">2025/xx/xx</span>
-            <span class="temple-card-name">浙江杭州・霊隠寺</span>
-          </div>
-        </article>
-
-        <!-- 4 -->
-        <article class="temple-card">
-          <div class="temple-image-wrap">
-            <img src="images/鸡鸣寺1.jpg" alt="江蘇南京・古鶏鳴寺" />
-            <button class="temple-card-more" aria-label="詳細を見る">
-              &gt;
-            </button>
-          </div>
-          <div class="temple-card-meta">
-            <span class="temple-card-date">2025/xx/xx</span>
-            <span class="temple-card-name">江蘇南京・古鶏鳴寺</span>
-          </div>
-        </article>
-      </div>
-
-
-      <!-- 自動スクロールするアイコン帯 -->
-      <div class="temple-icons-marquee">
-        <div class="temple-icons-track">
-          <img src="images/icon-incense.svg" alt="">
-          <img src="images/icon-bell.svg" alt="">
-          <img src="images/icon-gate.svg" alt="">
-          <img src="images/icon-lotus.svg" alt="">
-          <!-- 为了无缝循环，再复制一遍 -->
-          <img src="images/icon-incense.svg" alt="">
-          <img src="images/icon-bell.svg" alt="">
-          <img src="images/icon-gate.svg" alt="">
-          <img src="images/icon-lotus.svg" alt="">
+          <!-- 卡片 5 -->
+          <article class="master-card master-card-5">
+            <div class="master-card-header">
+              <img class="master-avatar" src="images/chanshi.webp" alt="法師5" />
+              <div class="master-meta">
+                <div class="master-name">妙音</div>
+                <div class="master-role">禅修指導</div>
+              </div>
+              <span class="master-tag">随縁</span>
+            </div>
+            <p class="master-quote">
+              小さな「ありがとう」が、心の灯りをそっとともします。
+            </p>
+          </article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
 
-  <!-- Features Section -->
-  <section class="features">
-    <div class="container">
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2L2 7v10c0 5.55 3.84 9.739 9 11 5.16-1.261 9-5.45 9-11V7l-10-5z" />
-            </svg>
+
+    <!-- Tea Ceremony Section -->
+    <section class="tea-ceremony">
+      <div class="container">
+        <div class="tea-content">
+          <div class="tea-images">
+            <img src="images/fashi.jpg" width="433" height="650"
+              alt="A serene minimalist setup showcasing a matcha tea bowl and bamboo whisk on a rustic wooden table.">
           </div>
-          <h3>座禅体験</h3>
-          <p>初心者から上級者まで、丁寧な指導のもと座禅を体験できます</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-            </svg>
+          <div class="tea-info">
+            <h3>茶道体験のご案内</h3>
+            <ul class="tea-schedule">
+              <li>
+                <span class="time">10:00 - 11:30</span>
+                <span class="activity">初心者向け茶道体験</span>
+              </li>
+              <li>
+                <span class="time">14:00 - 15:30</span>
+                <span class="activity">上級者向け茶道体験</span>
+              </li>
+              <li>
+                <span class="time">16:00 - 17:00</span>
+                <span class="activity">茶道の歴史と文化講座</span>
+              </li>
+            </ul>
           </div>
-          <h3>茶道体験</h3>
-          <p>日本の伝統文化である茶道を通じて、心の静寂を学びます</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-            </svg>
-          </div>
-          <h3>写経体験</h3>
-          <p>筆を持ち、心を込めて経文を写すことで精神統一を図ります</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Temple Gallery -->
-  <section class="temple-gallery">
-    <div class="container">
-      <h2>禅庭の四季</h2>
-      <div class="gallery-grid">
-        <div class="gallery-item">
+    <!-- Philosophy Section -->
+    <section class="philosophy">
+      <div class="container">
+        <h2>禅庭・それは一瞬一瞬の美しさを感じない</h2>
+        <div class="philosophy-content">
+          <div class="philosophy-item">
+            <h3>静寂を受け入れる心の在り方</h3>
+            <p>現代社会の喧騒から離れ、静寂の中で自分自身と向き合う時間を大切にします。</p>
+          </div>
+          <div class="philosophy-item">
+            <h3>今この瞬間に集中する意識の持ち方</h3>
+            <p>過去や未来に囚われることなく、今この瞬間に意識を向けることの大切さを学びます。</p>
+          </div>
+          <div class="philosophy-item">
+            <h3>自然と調和する生き方の実践</h3>
+            <p>四季の移ろいと共に生きる日本の美意識を通じて、自然との調和を体感します。</p>
+          </div>
+          <div class="philosophy-item">
+            <h3>心身を整える日常の習慣づくり</h3>
+            <p>座禅や茶道を通じて身につけた心の在り方を日常生活に活かす方法をお伝えします。</p>
+          </div>
+          <div class="philosophy-item">
+            <h3>他者への思いやりと慈悲の心</h3>
+            <p>自分自身を見つめることで、他者への深い理解と慈悲の心を育みます。</p>
+          </div>
+          <div class="philosophy-item">
+            <h3>文化と伝統を次世代に継承する責任</h3>
+            <p>古来より受け継がれてきた禅の教えを現代に生きる私たちが次世代に伝える使命があります。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Programs -->
+    <section class="programs">
+      <div class="container">
+        <h2>心の修養と、身体の健康を<br>整えることで、美しい体験ができます</h2>
+        <div class="programs-list">
+          <div class="program-item">
+            <div class="program-image">
+              <img
+                src="https://images.pexels.com/photos/8329643/pexels-photo-8329643.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+                width="433" height="650"
+                alt="Close-up of matcha tea preparation with a bamboo whisk and cup on a wooden board.">
+            </div>
+            <div class="program-content">
+              <h3>一日体験プログラム</h3>
+              <p>座禅、茶道、写経を一日で体験できる充実したプログラムです。</p>
+            </div>
+          </div>
+          <div class="program-item">
+            <div class="program-image">
+              <img
+                src="https://images.pexels.com/photos/5779194/pexels-photo-5779194.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                width="868" height="1300"
+                alt="A serene Buddhist statue in a temple garden in Kyoto, Japan, surrounded by nature.">
+            </div>
+            <div class="program-content">
+              <h3>週末リトリートプログラム</h3>
+              <p>二日間かけてじっくりと禅の世界に浸る特別なプログラムです。</p>
+            </div>
+          </div>
+          <div class="program-item">
+            <div class="program-image">
+              <img
+                src="https://images.pexels.com/photos/8285057/pexels-photo-8285057.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                width="1949" height="1300"
+                alt="Explore the tranquil beauty of a Shinto shrine nestled in Kamakura's lush green foliage.">
+            </div>
+            <div class="program-content">
+              <h3>季節の特別体験</h3>
+              <p>春の桜、夏の緑陰、秋の紅葉、冬の雪景色と共に楽しむ季節限定プログラムです。</p>
+            </div>
+          </div>
+          <div class="program-item">
+            <div class="program-image">
+              <img
+                src="https://images.pexels.com/photos/6249252/pexels-photo-6249252.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                width="975" height="1300"
+                alt="Collection of small traditional Japanese daruma dolls placed on stone column in sunny garden with green plants on summer time">
+            </div>
+            <div class="program-content">
+              <h3>個人指導プログラム</h3>
+              <p>一対一での丁寧な指導により、より深い禅の体験をお求めの方に。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Section -->
+    <section class="final-section">
+      <div class="final-content">
+        <h2>禅庭・それは一瞬一瞬の美しさを感じない</h2>
+        <div class="final-image">
           <img
-            src="https://images.pexels.com/photos/161164/senso-ji-kyoto-japan-temple-161164.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-            width="2516" height="1300"
-            alt="Stunning view of a traditional Japanese temple surrounded by lush gardens in Kyoto.">
-        </div>
-        <div class="gallery-item">
-          <img
-            src="https://images.pexels.com/photos/6039200/pexels-photo-6039200.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-            width="1950" height="1300"
-            alt="Low angle exterior of traditional aged red Asian temple surrounded by lush green trees in Japanese Tea Garden located in San Francisco on sunny day">
-        </div>
-        <div class="gallery-item">
-          <img
-            src="https://images.pexels.com/photos/9989617/pexels-photo-9989617.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-            width="1950" height="1300"
-            alt="A peaceful scene of a Japanese pagoda surrounded by lush greenery and traditional stone lanterns.">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Meditation Section -->
-  <section class="meditation-section">
-    <div class="meditation-content">
-      <div class="meditation-image">
-        <img
-          src="https://images.pexels.com/photos/35037855/pexels-photo-35037855.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-          width="433" height="650" alt="zen meditation monk">
-      </div>
-      <div class="meditation-text">
-        <h2>心静かに座り、今この瞬間に<br>集中する体験をしませんか</h2>
-        <p>座禅は単なる瞑想ではありません。自分自身の内なる声に耳を傾け、心の平安を見つける道です。</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Tea Ceremony Section -->
-  <section class="tea-ceremony">
-    <div class="container">
-      <div class="tea-content">
-        <div class="tea-images">
-          <img
-            src="https://images.pexels.com/photos/8474135/pexels-photo-8474135.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+            src="https://images.pexels.com/photos/34999951/pexels-photo-34999951.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
             width="433" height="650"
-            alt="A serene minimalist setup showcasing a matcha tea bowl and bamboo whisk on a rustic wooden table.">
-        </div>
-        <div class="tea-info">
-          <h3>茶道体験のご案内</h3>
-          <ul class="tea-schedule">
-            <li>
-              <span class="time">10:00 - 11:30</span>
-              <span class="activity">初心者向け茶道体験</span>
-            </li>
-            <li>
-              <span class="time">14:00 - 15:30</span>
-              <span class="activity">上級者向け茶道体験</span>
-            </li>
-            <li>
-              <span class="time">16:00 - 17:00</span>
-              <span class="activity">茶道の歴史と文化講座</span>
-            </li>
-          </ul>
+            alt="Scenic view of Hakone Shrine Torii Gate with Lake Ashi in the background, capturing Japan's natural beauty.">
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Philosophy Section -->
-  <section class="philosophy">
-    <div class="container">
-      <h2>禅庭・それは一瞬一瞬の美しさを感じない</h2>
-      <div class="philosophy-content">
-        <div class="philosophy-item">
-          <h3>静寂を受け入れる心の在り方</h3>
-          <p>現代社会の喧騒から離れ、静寂の中で自分自身と向き合う時間を大切にします。</p>
-        </div>
-        <div class="philosophy-item">
-          <h3>今この瞬間に集中する意識の持ち方</h3>
-          <p>過去や未来に囚われることなく、今この瞬間に意識を向けることの大切さを学びます。</p>
-        </div>
-        <div class="philosophy-item">
-          <h3>自然と調和する生き方の実践</h3>
-          <p>四季の移ろいと共に生きる日本の美意識を通じて、自然との調和を体感します。</p>
-        </div>
-        <div class="philosophy-item">
-          <h3>心身を整える日常の習慣づくり</h3>
-          <p>座禅や茶道を通じて身につけた心の在り方を日常生活に活かす方法をお伝えします。</p>
-        </div>
-        <div class="philosophy-item">
-          <h3>他者への思いやりと慈悲の心</h3>
-          <p>自分自身を見つめることで、他者への深い理解と慈悲の心を育みます。</p>
-        </div>
-        <div class="philosophy-item">
-          <h3>文化と伝統を次世代に継承する責任</h3>
-          <p>古来より受け継がれてきた禅の教えを現代に生きる私たちが次世代に伝える使命があります。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience Programs -->
-  <section class="programs">
-    <div class="container">
-      <h2>心の修養と、身体の健康を<br>整えることで、美しい体験ができます</h2>
-      <div class="programs-list">
-        <div class="program-item">
-          <div class="program-image">
+    <!-- Gallery Section -->
+    <section class="bottom-gallery">
+      <div class="container">
+        <h2>禅庭の四季の体験</h2>
+        <div class="gallery-grid-bottom">
+          <div class="gallery-item-bottom">
             <img
-              src="https://images.pexels.com/photos/8329643/pexels-photo-8329643.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+              src="https://images.pexels.com/photos/34974344/pexels-photo-34974344.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+              width="366" height="650" alt="Free stock photo of japan">
+            <h4>春の桜</h4>
+          </div>
+          <div class="gallery-item-bottom">
+            <img
+              src="https://images.pexels.com/photos/34981036/pexels-photo-34981036.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+              width="1082" height="650" alt="Free stock photo of contrast, experimental, japan">
+            <h4>夏の緑陰</h4>
+          </div>
+          <div class="gallery-item-bottom">
+            <img
+              src="https://images.pexels.com/photos/35025696/pexels-photo-35025696.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
               width="433" height="650"
-              alt="Close-up of matcha tea preparation with a bamboo whisk and cup on a wooden board.">
+              alt="A solitary monk walks along the exterior of a traditional Chinese temple, casting a shadow.">
+            <h4>秋の紅葉</h4>
           </div>
-          <div class="program-content">
-            <h3>一日体験プログラム</h3>
-            <p>座禅、茶道、写経を一日で体験できる充実したプログラムです。</p>
-          </div>
-        </div>
-        <div class="program-item">
-          <div class="program-image">
+          <div class="gallery-item-bottom">
             <img
-              src="https://images.pexels.com/photos/5779194/pexels-photo-5779194.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              width="868" height="1300"
-              alt="A serene Buddhist statue in a temple garden in Kyoto, Japan, surrounded by nature.">
-          </div>
-          <div class="program-content">
-            <h3>週末リトリートプログラム</h3>
-            <p>二日間かけてじっくりと禅の世界に浸る特別なプログラムです。</p>
+              src="https://images.pexels.com/photos/34521639/pexels-photo-34521639.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+              width="867" height="1300"
+              alt="A woman in a kimono stands by traditional Japanese architecture on a sunny day.">
+            <h4>冬の雪景色</h4>
           </div>
         </div>
-        <div class="program-item">
-          <div class="program-image">
-            <img
-              src="https://images.pexels.com/photos/8285057/pexels-photo-8285057.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              width="1949" height="1300"
-              alt="Explore the tranquil beauty of a Shinto shrine nestled in Kamakura's lush green foliage.">
-          </div>
-          <div class="program-content">
-            <h3>季節の特別体験</h3>
-            <p>春の桜、夏の緑陰、秋の紅葉、冬の雪景色と共に楽しむ季節限定プログラムです。</p>
-          </div>
-        </div>
-        <div class="program-item">
-          <div class="program-image">
-            <img
-              src="https://images.pexels.com/photos/6249252/pexels-photo-6249252.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-              width="975" height="1300"
-              alt="Collection of small traditional Japanese daruma dolls placed on stone column in sunny garden with green plants on summer time">
-          </div>
-          <div class="program-content">
-            <h3>個人指導プログラム</h3>
-            <p>一対一での丁寧な指導により、より深い禅の体験をお求めの方に。</p>
-          </div>
-        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer Hero Section -->
+  <section class="footer-hero" id="footer-hero">
+    <!-- 背景图层 -->
+    <div class="footer-hero-bg"></div>
+
+    <!-- 内容层 -->
+    <div class="footer-hero-inner">
+      <!-- 顶部：Logo -->
+      <header class="footer-hero-top">
+        <div class="footer-logo"><img src="images/logo-main.png" alt="UnkyoTravel"></div>
+      </header>
+
+      <div class="footer-hero-center">
+        <h2 class="footer-hero-title">
+          静けさが、あなた<br />
+          の心に語りかける
+        </h2>
+        <p class="footer-hero-sub">
+          景色とともに、心がほどけるひとときへ
+        </p>
+        <a href="#contact" class="footer-hero-btn">問い合わせ</a>
+      </div>
+
+      <!-- 底部：© + 链接 -->
+      <div class="footer-hero-bottom">
+        <span class="footer-copy">© 2026</span>
+        <nav class="footer-bottom-links">
+          <a href="#privacy">Privacy Policy</a>
+          <a href="#terms">Terms &amp; Conditions</a>
+        </nav>
       </div>
     </div>
   </section>
-
-  <!-- Final Section -->
-  <section class="final-section">
-    <div class="final-content">
-      <h2>禅庭・それは一瞬一瞬の美しさを感じない</h2>
-      <div class="final-image">
-        <img
-          src="https://images.pexels.com/photos/34999951/pexels-photo-34999951.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-          width="433" height="650"
-          alt="Scenic view of Hakone Shrine Torii Gate with Lake Ashi in the background, capturing Japan's natural beauty.">
-      </div>
-    </div>
-  </section>
-
-  <!-- Gallery Section -->
-  <section class="bottom-gallery">
-    <div class="container">
-      <h2>禅庭の四季の体験</h2>
-      <div class="gallery-grid-bottom">
-        <div class="gallery-item-bottom">
-          <img
-            src="https://images.pexels.com/photos/34974344/pexels-photo-34974344.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-            width="366" height="650" alt="Free stock photo of japan">
-          <h4>春の桜</h4>
-        </div>
-        <div class="gallery-item-bottom">
-          <img
-            src="https://images.pexels.com/photos/34981036/pexels-photo-34981036.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-            width="1082" height="650" alt="Free stock photo of contrast, experimental, japan">
-          <h4>夏の緑陰</h4>
-        </div>
-        <div class="gallery-item-bottom">
-          <img
-            src="https://images.pexels.com/photos/35025696/pexels-photo-35025696.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-            width="433" height="650"
-            alt="A solitary monk walks along the exterior of a traditional Chinese temple, casting a shadow.">
-          <h4>秋の紅葉</h4>
-        </div>
-        <div class="gallery-item-bottom">
-          <img
-            src="https://images.pexels.com/photos/34521639/pexels-photo-34521639.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-            width="867" height="1300"
-            alt="A woman in a kimono stands by traditional Japanese architecture on a sunny day.">
-          <h4>冬の雪景色</h4>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Final Call to Action -->
-  <section class="final-cta">
-    <div class="container">
-      <h2>静寂と共に、あなた<br>の心に響く体験を</h2>
-      <button class="cta-button-large">体験予約はこちら</button>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-info">
-          <h3>禅心寺</h3>
-          <p>〒123-4567 京都府京都市東山区清水1-294</p>
-          <p>TEL: 075-123-4567</p>
-          <p>営業時間: 9:00 - 17:00</p>
-        </div>
-        <div class="footer-links">
-          <h4>リンク</h4>
-          <ul>
-            <li><a href="#home">ホーム</a></li>
-            <li><a href="#about">寺院について</a></li>
-            <li><a href="#experience">体験</a></li>
-            <li><a href="#gallery">ギャラリー</a></li>
-            <li><a href="#contact">お問い合わせ</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 禅心寺. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
 
   <script src="script.js"></script>
 </body>

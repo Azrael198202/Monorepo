@@ -1,67 +1,88 @@
 document.addEventListener("DOMContentLoaded", function () {
-  /* ---------- 视频弹层 ---------- */
-  var openBtn = document.getElementById("heroVideoOpen");
-  var overlay = document.getElementById("heroVideoOverlay");
-  var closeBtn = document.getElementById("heroVideoClose");
-  var video = overlay && overlay.querySelector("video");
+  /* ===============================
+   * 1. Hero 视频弹层
+   * =============================== */
+  var videoOpenBtn = document.getElementById("heroVideoOpen");
+  var videoOverlay = document.getElementById("heroVideoOverlay");
+  var videoCloseBtn = document.getElementById("heroVideoClose");
+  var videoEl = videoOverlay
+    ? videoOverlay.querySelector("video, iframe")
+    : null;
 
-  function openVideo() {
-    if (!overlay) return;
-    overlay.classList.add("is-open");
-    overlay.setAttribute("aria-hidden", "false");
-    if (video) {
+  function openHeroVideo() {
+    if (!videoOverlay) return;
+    videoOverlay.classList.add("is-open");
+    videoOverlay.setAttribute("aria-hidden", "false");
+
+    if (videoEl && videoEl.tagName.toLowerCase() === "video") {
       try {
-        video.currentTime = 0;
-        video.play();
-      } catch (e) { }
+        videoEl.currentTime = 0;
+        videoEl.play();
+      } catch (e) {
+        // ignore
+      }
     }
   }
 
-  function closeVideo() {
-    if (!overlay) return;
-    overlay.classList.remove("is-open");
-    overlay.setAttribute("aria-hidden", "true");
-    if (video) {
+  function closeHeroVideo() {
+    if (!videoOverlay) return;
+    videoOverlay.classList.remove("is-open");
+    videoOverlay.setAttribute("aria-hidden", "true");
+
+    if (videoEl && videoEl.tagName.toLowerCase() === "video") {
       try {
-        video.pause();
-      } catch (e) { }
+        videoEl.pause();
+      } catch (e) {
+        // ignore
+      }
     }
   }
 
-  if (openBtn) {
-    openBtn.addEventListener("click", function (e) {
+  if (videoOpenBtn) {
+    videoOpenBtn.addEventListener("click", function (e) {
       e.preventDefault();
-      openVideo();
-    });
-  }
-  if (closeBtn) {
-    closeBtn.addEventListener("click", closeVideo);
-  }
-  if (overlay) {
-    overlay.addEventListener("click", function (e) {
-      if (e.target === overlay) closeVideo();
+      openHeroVideo();
     });
   }
 
-  /* ---------- 右上菜单（全屏左图＋右内容） ---------- */
-  var menuBtn = document.getElementById("heroMenuToggle");
+  if (videoCloseBtn) {
+    videoCloseBtn.addEventListener("click", function () {
+      closeHeroVideo();
+    });
+  }
+
+  if (videoOverlay) {
+    videoOverlay.addEventListener("click", function (e) {
+      // 点击遮罩空白区域关闭
+      if (e.target === videoOverlay) {
+        closeHeroVideo();
+      }
+    });
+  }
+
+  /* ===============================
+   * 2. 右上菜单（左图 + 右内容）
+   * =============================== */
+  var menuBtn = document.getElementById("heroMenuBtn");
   var menuOverlay = document.getElementById("heroMenuOverlay");
-  var menuClose = document.getElementById("heroMenuClose");
+  var menuCloseBtn = document.getElementById("heroMenuClose");
 
   function openMenu() {
     if (!menuOverlay) return;
     menuOverlay.classList.add("is-open");
-    menuOverlay.setAttribute("aria-hidden", "false");
-    if (menuBtn) menuBtn.classList.add("is-active");
-    document.body.classList.add("menu-open"); // 禁止页面滚动
+    document.body.classList.add("menu-open");
+    if (menuBtn) {
+      menuBtn.classList.add("is-active");
+    }
   }
 
   function closeMenu() {
     if (!menuOverlay) return;
     menuOverlay.classList.remove("is-open");
-    menuOverlay.setAttribute("aria-hidden", "true");
-    if (menuBtn) menuBtn.classList.remove("is-active");
     document.body.classList.remove("menu-open");
+    if (menuBtn) {
+      menuBtn.classList.remove("is-active");
+    }
   }
 
   if (menuBtn) {
@@ -74,85 +95,122 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  if (menuClose) {
-    menuClose.addEventListener("click", closeMenu);
+  if (menuCloseBtn) {
+    menuCloseBtn.addEventListener("click", function () {
+      closeMenu();
+    });
   }
 
   if (menuOverlay) {
-    // 点击黑色背景就关闭
     menuOverlay.addEventListener("click", function (e) {
+      // 只在点击遮罩空白时关闭，点击右侧内容不关闭
       if (e.target === menuOverlay) {
         closeMenu();
       }
     });
   }
 
-  // ESC 关闭菜单和视频
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") {
-      closeMenu();
-      closeVideo();
-    }
-  });
-
-  /* ---------- 滚动特效 D 方案：
-        1) 第一次向下滚动：Hero 淡出 + 自动滚到下一块
-        2) 后续 section 逐段滑入（类似 ScrollReveal 效果）
-  --------------------------------------------- */
-
+  /* ===============================
+   * 3. Hero 滚动淡出 + Section Scroll Reveal
+   * =============================== */
   var heroEl = document.querySelector(".hero");
-  var allSections = Array.prototype.slice.call(document.querySelectorAll("section"));
-
-  // 除了 hero 以外的内容区
-  var contentSections = allSections.filter(function (sec) {
-    return !sec.classList.contains("hero");
-  });
-
-  // 给所有内容区添加基础 reveal 类（CSS 里有 .reveal-section）
-  contentSections.forEach(function (sec) {
-    sec.classList.add("reveal-section");
-  });
-
-  // hero 下面的第一块内容（比如 .intro）
-  var firstContentSection = contentSections.length > 0 ? contentSections[0] : null;
-
-  // IntersectionObserver：控制第 2 块开始的滑入
-  var observer = new IntersectionObserver(
-    function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.15
-    }
+  var revealSections = Array.prototype.slice.call(
+    document.querySelectorAll(".reveal-section")
   );
+  var pageTopLayer = document.querySelector(".page-top-layer");
+  var footerHero = document.querySelector(".footer-hero");
+  var curtainMax = 1200;
 
-  // 从第二块内容开始交给 Observer（第一块由第一次滚动控制）
-  contentSections.slice(1).forEach(function (sec) {
-    observer.observe(sec);
+  // 初始：如果已经在可视区则加 is-visible
+  function revealOnLoad() {
+    revealSections.forEach(function (sec) {
+      var rect = sec.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        sec.classList.add("is-visible");
+      }
+    });
+  }
+
+  revealOnLoad();
+
+  window.addEventListener("scroll", function () {
+    // Hero 淡出
+    if (heroEl) {
+      var scrollTop =
+        window.scrollY || document.documentElement.scrollTop || 0;
+
+      if (scrollTop < 10) {
+        heroEl.classList.remove("hero-fade-out");
+      } else {
+        heroEl.classList.add("hero-fade-out");
+      }
+    }
+
+    // Scroll Reveal
+    revealSections.forEach(function (sec) {
+      if (sec.classList.contains("is-visible")) return;
+      var rect = sec.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.85 && rect.bottom > 0) {
+        sec.classList.add("is-visible");
+      }
+    });
+
+    // =========================
+    // 拉窗帘：接近页面底部时，
+    // 只移动 page-top-layer，footer 保持不动
+    // =========================
+    if (pageTopLayer && footerHero) {
+      var docEl = document.documentElement;
+      var scrollY =
+        window.scrollY || docEl.scrollTop || 0;
+      var maxScroll = docEl.scrollHeight - window.innerHeight;
+
+      // 从倒数一屏开始做“拉窗帘”动画
+      var start = maxScroll - window.innerHeight;
+      if (start < 0) start = 0;
+
+      if (scrollY <= start) {
+        // 还没进入拉窗帘区域
+        pageTopLayer.style.transform = "translateY(0)";
+        footerHero.classList.remove("is-visible");
+      } else {
+        // 进入拉窗帘阶段：0~1 的进度
+        var progress = Math.min(
+          (scrollY - start) / window.innerHeight,
+          1
+        );
+        var offset = -curtainMax * progress;
+        pageTopLayer.style.transform =
+          "translateY(" + offset + "px)";
+
+        // 同时让 footer 的背景 & 文案淡入
+        footerHero.classList.add("is-visible");
+      }
+    }
   });
 
-  // 第一次向下滚轮：Hero 淡出 & 自动滚到第一块内容
+  /* ===============================
+   * 4. 第一次滚轮：从 Hero 跳到第一块内容
+   * =============================== */
+  var firstContentSection = document.querySelector(".intro");
   var firstScrollDone = false;
 
   window.addEventListener(
     "wheel",
     function (e) {
+      // ✅ 如果鼠标在寺院ギャラリー中，则交给寺院逻辑，不处理这里
+      if (e.target && e.target.closest && e.target.closest(".temple-gallery")) {
+        return;
+      }
+
       if (firstScrollDone) return;
       if (e.deltaY <= 0) return; // 只处理向下滚
 
       if (!firstContentSection) return;
 
       firstScrollDone = true;
-
-      // 第一块内容淡入
       firstContentSection.classList.add("is-visible");
 
-      // 平滑滚动到第一块内容顶部
       window.scrollTo({
         top: firstContentSection.offsetTop,
         behavior: "smooth"
@@ -161,41 +219,141 @@ document.addEventListener("DOMContentLoaded", function () {
     { passive: true }
   );
 
-  window.addEventListener("scroll", function () {
-    if (!heroEl) return;
+  /* ===============================
+   * 5. 禅旅の寺院：拖动 + 滚轮横向滚动
+   * =============================== */
+  var templeGalleries = document.querySelectorAll(".temple-gallery");
 
-    var scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
+  templeGalleries.forEach(function (gallery) {
+    if (!gallery) return;
 
-    // 在页面最顶端的时候，显示 hero
-    if (scrollTop < 10) {
-      heroEl.classList.remove("hero-fade-out");
-    } else {
-      // 向下滚动一点，就让 hero 淡出
-      heroEl.classList.add("hero-fade-out");
-    }
-  });
-
-  // 保险：刷新时如果已经在下面，让视窗内的 section 直接可见
-  contentSections.forEach(function (sec) {
-    var rect = sec.getBoundingClientRect();
-    if (rect.top < window.innerHeight && rect.bottom > 0) {
-      sec.classList.add("is-visible");
-    }
-  });
-
-  /* ---------- 寺院ギャラリー：ホイールで横スクロール ---------- */
-  var templeGallery = document.getElementById("templeGallery");
-  if (templeGallery) {
-    templeGallery.addEventListener(
+    // 1) 鼠标滚轮：上下滚 → 左右滚
+    gallery.addEventListener(
       "wheel",
       function (e) {
-        // 垂直方向のスクロールを横方向に変換
+        // 把上下滚转成左右滚；如果已经是横向滚，则保持默认
         if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-          e.preventDefault();
-          templeGallery.scrollLeft += e.deltaY;
+          e.preventDefault(); // 不让页面整体上下滚
+          var speed = 1.1; // 滚动速度可调
+          gallery.scrollLeft += e.deltaY * speed;
         }
       },
       { passive: false }
     );
-  }
+
+    // 2) 鼠标按住拖动
+    var isDown = false;
+    var startX = 0;
+    var scrollLeft = 0;
+
+    gallery.addEventListener("mousedown", function (e) {
+      isDown = true;
+      gallery.classList.add("is-dragging");
+      startX = e.pageX - gallery.offsetLeft;
+      scrollLeft = gallery.scrollLeft;
+    });
+
+    ["mouseleave", "mouseup"].forEach(function (evt) {
+      gallery.addEventListener(evt, function () {
+        isDown = false;
+        gallery.classList.remove("is-dragging");
+      });
+    });
+
+    gallery.addEventListener("mousemove", function (e) {
+      if (!isDown) return;
+      e.preventDefault();
+      var x = e.pageX - gallery.offsetLeft;
+      var walk = (x - startX) * 1.2; // 数值越大 → 滚得越快
+      gallery.scrollLeft = scrollLeft - walk;
+    });
+
+    // 3) 触摸滑动（手机 / 平板）
+    var touchStartX = 0;
+    var touchStartScroll = 0;
+
+    gallery.addEventListener("touchstart", function (e) {
+      var t = e.touches[0];
+      touchStartX = t.pageX;
+      touchStartScroll = gallery.scrollLeft;
+    });
+
+    gallery.addEventListener("touchmove", function (e) {
+      var t = e.touches[0];
+      var deltaX = t.pageX - touchStartX;
+      gallery.scrollLeft = touchStartScroll - deltaX;
+    });
+  });
+});
+
+document.querySelectorAll(".temple-gallery-wrapper").forEach(function (wrapper) {
+  const gallery = wrapper.querySelector(".temple-gallery");
+  const btnLeft = wrapper.querySelector(".temple-arrow-left");
+  const btnRight = wrapper.querySelector(".temple-arrow-right");
+
+  if (!gallery || !btnLeft || !btnRight) return;
+
+  const scrollAmount = 600; // ← 每次移动多少像素（可调）
+
+  btnLeft.addEventListener("click", function () {
+    gallery.scrollBy({
+      left: -scrollAmount,
+      behavior: "smooth"
+    });
+  });
+
+  btnRight.addEventListener("click", function () {
+    gallery.scrollBy({
+      left: scrollAmount,
+      behavior: "smooth"
+    });
+  });
+
+  /* ================= 卷轴 Section：首次进入时展开 ================= */
+
+  (function () {
+    var scrollSection = document.getElementById("zen-scroll");
+    if (!scrollSection) return;
+
+    var hasOpened = false;
+    var ctaBtn = scrollSection.querySelector(".scroll-cta");
+
+    // 1) 使用 IntersectionObserver，第一次进视口时触发展开
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && !hasOpened) {
+            hasOpened = true;
+            scrollSection.classList.add("is-open");
+            observer.disconnect();
+          }
+        });
+      },
+      {
+        threshold: 0.4 // 有 40% 高度进入视口就算“看到了”
+      }
+    );
+
+    observer.observe(scrollSection);
+
+    // 2) 点击按钮时，播放按钮的 pulse 动画
+    if (ctaBtn) {
+      ctaBtn.addEventListener("click", function () {
+        // 先移除再强制 reflow，再加上，确保每次点击都能重新触发动画
+        ctaBtn.classList.remove("is-pulse");
+        void ctaBtn.offsetWidth;
+        ctaBtn.classList.add("is-pulse");
+
+        // 这里如果之后想要滚动到其他 section，可以在下面加：
+        // const target = document.querySelector(".temples");
+        // if (target) {
+        //   window.scrollTo({
+        //     top: target.offsetTop,
+        //     behavior: "smooth"
+        //   });
+        // }
+      });
+    }
+  })();
+
 });
