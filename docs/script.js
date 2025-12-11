@@ -336,6 +336,79 @@ document.addEventListener("DOMContentLoaded", function () {
       gallery.scrollLeft = touchStartScroll - deltaX;
     });
   });
+
+  /* ===============================
+   * 6. experience Accordion
+   * =============================== */
+  const items = document.querySelectorAll(".exp-item");
+
+  // 初始化：根据 open 类设置初始状态
+  items.forEach((item) => {
+    const body = item.querySelector(".exp-body");
+    const toggle = item.querySelector(".exp-toggle");
+
+    if (!body || !toggle) return;
+
+    if (item.classList.contains("open")) {
+      body.style.maxHeight = body.scrollHeight + "px";
+      toggle.textContent = "×";
+    } else {
+      body.style.maxHeight = 0;
+      toggle.textContent = "＋";
+    }
+  });
+
+  // 绑定点击事件（点击整行头部）
+  items.forEach((item) => {
+    const head = item.querySelector(".exp-head");
+    const body = item.querySelector(".exp-body");
+    const toggle = item.querySelector(".exp-toggle");
+
+    if (!head || !body || !toggle) return;
+
+    head.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const isOpen = item.classList.contains("open");
+
+      // 先关闭全部
+      items.forEach((other) => {
+        const otherBody = other.querySelector(".exp-body");
+        const otherToggle = other.querySelector(".exp-toggle");
+        if (!otherBody || !otherToggle) return;
+
+        other.classList.remove("open");
+        otherBody.style.maxHeight = 0;
+        otherToggle.textContent = "＋";
+      });
+
+      // 再决定当前这个：如果原来是关的 → 打开
+      if (!isOpen) {
+        item.classList.add("open");
+        body.style.maxHeight = body.scrollHeight + "px";
+        toggle.textContent = "×";
+      } else {
+        // 原来是开的，再点就完全收起
+        item.classList.remove("open");
+        body.style.maxHeight = 0;
+        toggle.textContent = "＋";
+      }
+    });
+  });
+
+  // 窗口 resize 时，重新计算已展开项高度，防止文字换行截断
+  window.addEventListener("resize", function () {
+    items.forEach((item) => {
+      const body = item.querySelector(".exp-body");
+      if (!body) return;
+      if (item.classList.contains("open")) {
+        body.style.maxHeight = body.scrollHeight + "px";
+      }
+    });
+  });
+
+
+  // ===============================
 });
 
 document.querySelectorAll(".temple-gallery-wrapper").forEach(function (wrapper) {

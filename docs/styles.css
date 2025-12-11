@@ -1841,7 +1841,7 @@ body.menu-open {
 
 /* SECTION 容器 */
 .zen-overview {
-  padding: 80px 20px;
+  padding: 40px 20px;
   background: #ffffff;
   display: flex;
   justify-content: center;
@@ -1904,6 +1904,226 @@ body.menu-open {
     font-size: 15px;
   }
 }
+
+/* =========================
+ * experience Section
+ * ========================= */
+/* 可以放在全局 CSS 中 */
+
+.experience-section {
+  background: #000;
+  padding: 40px 0;
+  color: #fff;
+  font-family: "Noto Serif JP", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  border-radius: 20px;
+}
+
+.experience-title {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.experience-title h2 {
+  font-size: 42px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.experience-title p {
+  font-size: 24px;
+  opacity: 0.8;
+}
+
+.experience-list {
+  width: 65%;
+  margin: 0 auto;
+}
+
+/* 每一行 item */
+.exp-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 24px 0;
+}
+
+/* 头部行：编号 + 小图 + 标题 + 按钮 */
+.exp-head {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.exp-number {
+  opacity: 0.6;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* 小缩略图（未展开时也始终有） */
+.exp-thumb {
+  width: 90px;
+  height: 60px;
+  overflow: hidden;
+  border-radius: 8px;
+  flex-shrink: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.exp-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+  display: block;
+}
+
+/* hover 小图轻微放大 */
+.exp-thumb:hover img {
+  transform: scale(1.06);
+}
+
+/* 展开状态时，小图淡出 + 缩小一点，让视觉重心交给大图 */
+.exp-item.open .exp-thumb {
+  opacity: 0.0;
+  transform: scale(0.75);
+}
+
+.exp-title {
+  flex: 1;
+  font-size: 18px;
+}
+
+.exp-toggle {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Accordion 主体 */
+.exp-body {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    max-height 0.55s ease,
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+
+.exp-item.open .exp-body {
+  max-height: 1000px;
+  /* 足够大的值即可 */
+  opacity: 1;
+  transform: translateY(0);
+  margin-top: 24px;
+}
+
+/* 展开内层布局：左图右文 */
+.exp-body-inner {
+  display: flex;
+  gap: 40px;
+}
+
+/* 大图容器 */
+.exp-image {
+  flex: 0 0 380px;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+}
+
+.exp-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center center;
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
+}
+
+/* hover 大图放大，不改变布局大小 */
+.exp-image:hover img {
+  transform: scale(1.06);
+  filter: brightness(1.04);
+}
+
+/* 文本部分 */
+.exp-content h3 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.exp-desc {
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+.exp-number-box {
+  margin: 20px 0;
+}
+
+.exp-number-box .num {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.exp-number-box .label {
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+.exp-detail {
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+/* 参照按钮 */
+.exp-btn {
+  margin-top: 22px;
+  padding: 12px 36px;
+  border-radius: 999px;
+  border: none;
+  background: #fff;
+  color: #000;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* 响应式：手机时上下排列 */
+@media (max-width: 960px) {
+  .experience-title h2 {
+    font-size: 32px;
+  }
+
+  .experience-title p {
+    font-size: 18px;
+  }
+
+  .exp-body-inner {
+    flex-direction: column;
+  }
+
+  .exp-image {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+}
+
+
 
 
 
