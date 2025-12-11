@@ -67,24 +67,63 @@ document.addEventListener("DOMContentLoaded", function () {
   var menuOverlay = document.getElementById("heroMenuOverlay");
   var menuCloseBtn = document.getElementById("heroMenuClose");
 
+  let scrollY = 0;
+
+  // ----------------------
+  // 打开菜单：锁定滚动
+  // ----------------------
   function openMenu() {
     if (!menuOverlay) return;
+
+    // 记录当前滚动位置
+    scrollY = window.scrollY || window.pageYOffset;
+
+    // 锁定 body（禁止滚动 + 固定位置）
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = "0";
+    document.body.style.right = "0";
+    document.body.style.width = "100%";
+    document.body.style.overflow = "hidden";
+
+    // 打开菜单
     menuOverlay.classList.add("is-open");
     document.body.classList.add("menu-open");
+
     if (menuBtn) {
       menuBtn.classList.add("is-active");
     }
   }
 
+  // ----------------------
+  // 关闭菜单：恢复滚动
+  // ----------------------
   function closeMenu() {
     if (!menuOverlay) return;
+
+    // 关闭菜单
     menuOverlay.classList.remove("is-open");
     document.body.classList.remove("menu-open");
+
     if (menuBtn) {
       menuBtn.classList.remove("is-active");
     }
+
+    // 解除 body 固定
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+    document.body.style.width = "";
+    document.body.style.overflow = "";
+
+    // 恢复到原滚动位置
+    window.scrollTo(0, scrollY);
   }
 
+  // ----------------------
+  // 按钮事件
+  // ----------------------
   if (menuBtn) {
     menuBtn.addEventListener("click", function () {
       if (menuOverlay && menuOverlay.classList.contains("is-open")) {
@@ -101,14 +140,27 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // 点击遮罩关闭
   if (menuOverlay) {
     menuOverlay.addEventListener("click", function (e) {
-      // 只在点击遮罩空白时关闭，点击右侧内容不关闭
       if (e.target === menuOverlay) {
         closeMenu();
       }
     });
+
+    // 阻止滚轮与触摸滚动（让背景完全不动）
+    menuOverlay.addEventListener(
+      "wheel",
+      (e) => e.preventDefault(),
+      { passive: false }
+    );
+    menuOverlay.addEventListener(
+      "touchmove",
+      (e) => e.preventDefault(),
+      { passive: false }
+    );
   }
+
 
   /* ===============================
    * 3. Hero 滚动淡出 + Section Scroll Reveal

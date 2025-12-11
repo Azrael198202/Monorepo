@@ -457,13 +457,14 @@ body {
 .hero-menu-overlay.is-open {
   opacity: 1;
   pointer-events: auto;
+  display: block;
 }
 
 /* 左右两列布局 */
 .hero-menu-layout {
   display: flex;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
 }
 
 /* 左侧大图区域（约 60% 宽） */
@@ -471,7 +472,6 @@ body {
   flex: 0 0 60%;
   position: relative;
   background-image: url("images/menu-left.jpg");
-  /* 这里用你那张夕阳图 */
   background-size: cover;
   background-position: center center;
   border-radius: 0 0 0 0;
@@ -1274,7 +1274,6 @@ body.menu-open {
   display: flex;
   justify-content: center;
   align-items: center;
-
   background: linear-gradient(to bottom,
       #fdfcf7 0%,
       #f7f3e8 50%,
@@ -1293,7 +1292,7 @@ body.menu-open {
   overflow: hidden;
   background-image: url("images/monkhouse.webp");
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
 
   transform-origin: center center;
@@ -1415,8 +1414,18 @@ body.menu-open {
   }
 }
 
-/* ====== Events Section ====== */
+@media (max-width: 1400px) {
+  .scroll-frame {
+    width: 1200px;
+  }
 
+  .scroll-inner {
+    width: 98%;
+  }
+}
+
+
+/* ====== Events Section ====== */
 .events-section {
   padding: 40px 0;
   background: #f5f5f5;
@@ -1732,8 +1741,8 @@ body.menu-open {
   width: 64px;
   height: 64px;
   border-radius: 999px;
-  border: 3px solid #fff; 
-  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  border: 3px solid #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   object-fit: cover;
 }
 
@@ -1830,6 +1839,71 @@ body.menu-open {
   }
 }
 
+/* SECTION 容器 */
+.zen-overview {
+  padding: 80px 20px;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+}
+
+.zen-inner {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+}
+
+/* 顶部小标题 */
+.zen-subtitle {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #999;
+  margin-bottom: 10px;
+}
+
+/* 主标题 */
+.zen-title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 60px;
+  line-height: 1.6;
+}
+
+/* 每一段内容 */
+.zen-block {
+  margin-bottom: 60px;
+}
+
+/* 子标题 */
+.zen-heading {
+  font-size: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+/* 正文 */
+.zen-text {
+  font-size: 16px;
+  line-height: 1.9;
+  color: #444;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .zen-title {
+    font-size: 26px;
+  }
+
+  .zen-heading {
+    font-size: 20px;
+  }
+
+  .zen-text {
+    font-size: 15px;
+  }
+}
 
 
 
