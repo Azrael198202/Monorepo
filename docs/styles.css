@@ -2259,8 +2259,12 @@ body.menu-open {
 
 /* Programs Section */
 .programs {
-  padding: 100px 0;
+  padding: 80px 0;
   background: white;
+}
+
+.programs .container{
+  max-width: 100vw;
 }
 
 .programs h2 {
@@ -2307,75 +2311,272 @@ body.menu-open {
 
 .program-content p {
   color: #666;
+  font-size: 0.85rem;
   line-height: 1.6;
 }
 
-/* Final Section */
-.final-section {
-  padding: 100px 0;
-  background: #2c3e50;
-  color: white;
-  text-align: center;
-}
-
-.final-content h2 {
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  font-weight: 300;
-}
-
-.final-image img {
+/* ========== 寺院と未来 Section ========== */
+.temple-future-section {
+  position: relative;
   width: 100%;
-  max-width: 600px;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 10px;
+  padding: 140px 0;
+  overflow: hidden;
+  border-radius: 24px;
 }
 
-/* Bottom Gallery */
-.bottom-gallery {
-  padding: 100px 0;
-  background: #f8f8f8;
-  transition: opacity 0.6s ease, transform 0.6s ease;
+.temple-future-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
 }
 
-.bottom-gallery h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 60px;
-  color: #2c3e50;
-  font-weight: 300;
-}
-
-.gallery-grid-bottom {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-}
-
-.gallery-item-bottom {
-  text-align: center;
-}
-
-.gallery-item-bottom img {
+.temple-future-bg img {
   width: 100%;
-  height: 200px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 15px;
+  filter: brightness(0.65) blur(0px);
+  transform: scale(1.05);
 }
 
-.gallery-item-bottom h4 {
-  font-size: 1.2rem;
-  color: #2c3e50;
+.temple-future-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+  text-align: center;
+  color: #ffffff;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
+
+.temple-future-title {
+  font-size: 2.6rem;
+  font-weight: 600;
+  margin-bottom: 28px;
+  line-height: 1.4;
+}
+
+.temple-future-desc {
+  font-size: 1.15rem;
+  line-height: 2.1;
+  opacity: 0.95;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .temple-future-section {
+    padding: 100px 0;
+  }
+
+  .temple-future-title {
+    font-size: 1.9rem;
+  }
+
+  .temple-future-desc {
+    font-size: 1rem;
+  }
+}
+
+
+/* ==== 禅に触れる体験（Bottom Gallery）==== */
+
+.bottom-gallery.zen-experience {
+  padding: 40px 0;
+  background: #f3f4f6;
+  /* 淡いグレー背景（外側） */
+}
+
+.bottom-gallery.zen-experience .container {
+  background: #ffffff;
+  border-radius: 32px;
+  padding: 48px 56px;
+  box-shadow: 0 22px 45px rgba(15, 23, 42, 0.08);
+  max-width: 67vw;
+  /* 可按你的 layout 调整 */
+  margin: 0 auto;
+}
+
+/* 上部：タイトル + 説明文を左右に配置 */
+
+.zen-experience-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.zen-experience-title {
+  font-size: 2.4rem;
+  line-height: 1.3;
+  font-weight: 500;
+  margin: 0;
+}
+
+.zen-experience-desc {
+  margin: 0;
+  max-width: 420px;
+  font-size: 0.75rem;
+  line-height: 1.9;
+  color: #4b5563;
+  text-align: left;
+}
+
+/* 中央の横並びカード群 */
+
+.zen-experience-gallery {
+  margin-top: 32px;
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scroll-snap-type: x mandatory;
+}
+
+.zen-experience-gallery::-webkit-scrollbar {
+  height: 6px;
+}
+
+.zen-experience-gallery::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.6);
+  border-radius: 999px;
+}
+
+.zen-exp-item {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  min-width: 200px;
+  /* ← 变窄 */
+  max-width: 220px;
+  aspect-ratio: 3 / 4;
+  /* ← 改成竖长 */
+  background: #000;
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.zen-exp-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 下部の黒グラデーション */
+
+.zen-exp-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 0.0) 60%);
+  pointer-events: none;
+}
+
+.zen-exp-label {
+  position: absolute;
+  left: 16px;
+  bottom: 12px;
+  z-index: 1;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.zen-exp-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 35px rgba(15, 23, 42, 0.35);
+}
+
+/* 下部：説明 + ボタン */
+
+.zen-experience-footer {
+  margin-top: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.zen-experience-footer h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.zen-experience-footer p {
+  margin: 4px 0 0;
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+/* CTA ボタン */
+
+.zen-exp-btn {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  border-radius: 999px;
+  background: #111827;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  white-space: nowrap;
+}
+
+.zen-exp-btn:hover {
+  background: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.45);
+}
+
+.zen-exp-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.35);
+}
+
+/* レスポンシブ */
+
+@media (max-width: 900px) {
+  .bottom-gallery.zen-experience .container {
+    padding: 32px 24px;
+    border-radius: 24px;
+  }
+
+  .zen-experience-head {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .zen-experience-desc {
+    max-width: none;
+  }
+
+  .zen-experience-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .zen-exp-btn {
+    margin-left: 0;
+  }
+}
+
 
 .page-top-layer {
   position: relative;
   z-index: 4;
-  /* 在 footer 上面 */
   background: #f5f5f5;
-  /* 你现在内容区背景色 */
   transform: translateY(0);
   transition: transform 0.2s linear;
   /* 平滑上拉 */

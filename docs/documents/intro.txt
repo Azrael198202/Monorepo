@@ -4,10 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Unkyo Buddhist Exchange｜日中仏教文化交流</title>
+  <title>Unkyo Buddhist Exchange｜中日仏教文化交流ネットワーク</title>
   <meta name="description"
-    content="Unkyo Buddhist Exchange は、日中両国の寺院・僧侶・研究者・市民をつなぎ、仏教と文化を通じた交流をすすめる非営利団体です。交流プロジェクト、共同法要、研究会、文化体験を通じて、国境をこえた「仏縁のネットワーク」を育てています。">
+    content="Unkyo Buddhist Exchange は、中日両国の寺院・僧侶・研究者・市民をつなぎ、仏教と文化を通じた交流をすすめる非営利団体です。交流プロジェクト、共同法要、研究会、文化体験を通じて、国境をこえた「仏縁のネットワーク」を育てています。">
   <link rel="stylesheet" href="styles.css">
+  <!-- 下面两个 gsap 你如果不需要可以删掉 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
 </head>
@@ -18,29 +19,32 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-inner">
+        <!-- 顶部：Logo + 右上菜单按钮 -->
         <header class="hero-top">
-          <div class="hero-logo"><img src="images/logo-main.png" alt="UnkyoTravel"></div>
+          <div class="hero-logo"><img src="images/logo-main.png" alt="Unkyo Buddhist Exchange"></div>
           <button class="hero-menu-btn" id="heroMenuBtn" aria-label="Open menu">
             <span></span><span></span><span></span>
           </button>
         </header>
 
-        <!-- Menu -->
+        <!-- 右侧滑出的菜单面板（覆盖在 hero 上） -->
+        <!-- 全屏菜单 Overlay：左大图 + 右内容 -->
         <div class="hero-menu-overlay" id="heroMenuOverlay" aria-hidden="true">
           <div class="hero-menu-layout">
-            <!-- Menu Image Area -->
+            <!-- 左侧大图区域 -->
             <div class="hero-menu-left">
               <div class="hero-menu-left-inner">
                 <div class="hero-menu-left-caption">
                   仏縁でつながる、中日という二つの岸
                 </div>
                 <div class="hero-menu-left-actions">
-                  <button class="hero-menu-left-main">ご縁を結ぶ</button>
+                  <button class="hero-menu-left-main">賛助・ボランティア</button>
                   <button class="hero-menu-left-lang">English / 日本語</button>
                 </div>
               </div>
             </div>
 
+            <!-- 右侧白色内容区域 -->
             <div class="hero-menu-right">
               <button class="hero-menu-close" id="heroMenuClose" aria-label="Close menu">
                 ×
@@ -48,10 +52,10 @@
 
               <div class="hero-menu-body">
                 <div class="hero-menu-logo">
-                  <img src="images/logo-b.png" alt="UnkyoTravel">
+                  <img src="images/logo-b.png" alt="Unkyo Buddhist Exchange">
                 </div>
 
-                <h2 class="hero-menu-title">お問い合わせ</h2>
+                <h2 class="hero-menu-title">お問い合わせ・連携のご相談</h2>
 
                 <p class="hero-menu-contact">
                   <a href="mailto:hello@abcdef.com">hello@abcdef.com</a>
@@ -60,7 +64,7 @@
                 <div class="hero-menu-links">
                   <a href="#zen-trip">団体について</a>
                   <a href="#experience">交流プログラム</a>
-                  <a href="#culture">文化と仏縁</a>
+                  <a href="#culture">寺院と文化ネットワーク</a>
                   <a href="#contact">お問い合わせ</a>
                 </div>
 
@@ -73,24 +77,24 @@
         </div>
 
 
-        <!-- Hero Title -->
+        <!-- 中央标题 -->
         <div class="hero-center">
           <p class="hero-kicker">
-            日本と中国の寺院・僧侶・研究者・市民が<br />仏教と文化を通じて、静かに手を取り合うための交流
+            中国と日本の寺院・僧侶・研究者・市民が<br />仏教と文化を通じて、静かに手を取り合うための交流プラットフォーム
           </p>
           <h1 class="hero-title">
             中日仏教が出会い、<br />
             互いの「心のふるさと」を結び直す
           </h1>
           <div class="hero-actions">
-            <a href="#contact" class="hero-btn hero-btn-primary">ご縁を結ぶ</a>
-            <a href="#zen-trip" class="hero-btn hero-btn-secondary">理念を知る</a>
+            <a href="#contact" class="hero-btn hero-btn-primary">協力・参加のご相談</a>
+            <a href="#zen-trip" class="hero-btn hero-btn-secondary">団体の理念を知る</a>
           </div>
         </div>
 
-        <!-- Bottom: left trusted , right : advertising / promotional animation -->
+        <!-- 底部：左侧信赖人数，右侧视频卡片 -->
         <div class="hero-bottom">
-          <!-- left bottom：Trusted by -->
+          <!-- 左下：Trusted by -->
           <div class="hero-trust">
             <div class="hero-avatars">
               <img src="images/0.png" alt="" />
@@ -98,18 +102,18 @@
               <img src="images/0.png" alt="" />
             </div>
             <div class="hero-trust-text">
-              <span>Trusted by</span>
-              <span>日中 120+<br />寺院・団体</span>
+              <span>Joined by</span>
+              <span>中日 120+<br />寺院・団体</span>
             </div>
           </div>
 
-          <!-- right : advertising / promotional animation -->
+          <!-- 右下：视频卡片（按钮） -->
           <button type="button" class="hero-video-card" id="heroVideoOpen">
-            <img src="images/ti.jpg" alt="Discover full video" class="hero-video-thumb" />
+            <img src="images/ti.jpg" alt="団体紹介ムービーを見る" class="hero-video-thumb" />
             <div class="hero-video-body">
               <div class="hero-video-text">
-                <span class="hero-video-label">Discover full</span>
-                <span class="hero-video-title">video</span>
+                <span class="hero-video-label">About our</span>
+                <span class="hero-video-title">mission</span>
               </div>
               <div class="hero-video-play">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -120,7 +124,7 @@
           </button>
         </div>
 
-        <!-- click to display the animation at the overlay -->
+        <!-- 点击后浮现在 hero 上的视频层 -->
         <div class="hero-video-overlay" id="heroVideoOverlay" aria-hidden="true">
           <div class="hero-video-dialog">
             <button class="hero-video-close" type="button" id="heroVideoClose">
@@ -131,6 +135,7 @@
             </button>
 
             <div class="hero-video-frame">
+              <!-- 替换成你的视频路径 -->
               <video src="videos/temple-hero.mp4" controls playsinline></video>
             </div>
           </div>
@@ -138,6 +143,7 @@
       </div>
     </section>
 
+    <!-- 下面是原来的各个 section，保持不变即可 -->
     <!-- Introduction Section -->
     <section class="intro">
       <div class="container intro-container">
@@ -147,7 +153,7 @@
             出会いは、文化の理解へとひろがっていく
           </h2>
           <a href="#zen-trip" class="intro-heading-btn">
-            日中仏教交流について
+            中日仏教交流について
           </a>
         </header>
         <article class="intro-card intro-card-poem">
@@ -157,14 +163,14 @@
           </p>
         </article>
 
-        <!-- card -->
+        <!-- 卡片布局 -->
         <div class="intro-grid">
-          <!-- middle：根へ -->
+          <!-- 中：寻根 图片卡片 -->
           <article class="intro-card intro-card-poster">
-            <img src="images/root.png" alt="尋根 Seeking Origin">
+            <img src="images/root.png" alt="仏教の源流をたどる">
           </article>
 
-          <!-- 01 根へ -->
+          <!-- 文本卡片 01 根へ -->
           <article class="intro-card intro-card-text">
             <div class="intro-card-top">
               <span class="intro-card-number">01</span>
@@ -174,15 +180,15 @@
             </div>
             <h3 class="intro-card-title">根へ</h3>
             <p class="intro-card-body">
-              日本と中国、二つの大地に根づいた仏教の歴史をもう一度見つめ直します。<br>
+              中国と日本、二つの大地に根づいた仏教の歴史をもう一度見つめ直します。<br>
               経典・戒律・修行の伝承だけでなく、寺院建築や芸術、生活文化に刻まれた「仏教の足跡」を、
               共同研究・現地交流・記録映像などを通じて次世代へつないでいきます。
             </p>
           </article>
 
-          <!-- right：坐禅の写真 -->
+          <!-- 右：坐禅の写真 -->
           <article class="intro-card intro-card-photo">
-            <img src="images/origin.png" alt="禅僧の坐禅">
+            <img src="images/origin.png" alt="中日両国僧侶の坐禅交流">
           </article>
 
           <!-- 下：02 静寂へ -->
@@ -203,7 +209,7 @@
 
           <!-- 下：03 同じ源へ -->
           <article class="intro-card intro-card-photo">
-            <img src="images/quiet.png" alt="同じ源">
+            <img src="images/quiet.png" alt="同じ源からひろがる仏縁">
           </article>
 
           <article class="intro-card intro-card-text">
@@ -215,8 +221,8 @@
             </div>
             <h3 class="intro-card-title">同じ源へ</h3>
             <p class="intro-card-body">
-              日本と中国、歩んできた歴史はちがっても、その根には同じ「仏教」という源があります。<br>
-              私たちは、日中両国の寺院・学術機関・市民団体と連携しながら、互いのちがいを尊重しつつ、
+              中国と日本、歩んできた歴史はちがっても、その根には同じ「仏教」という源があります。<br>
+              私たちは、中日両国の寺院・学術機関・市民団体と連携しながら、互いのちがいを尊重しつつ、
               共通の源から学び合う交流の場をひらいています。
             </p>
           </article>
@@ -253,12 +259,12 @@
       <div class="container temples-header-container">
         <!-- 見出し + 説明 -->
         <div class="temples-header">
-          <h2 class="temples-title">中日仏教交流寺院</h2>
+          <h2 class="temples-title">中日仏教交流ネットワーク寺院</h2>
           <div class="temples-description">
             <p>
-              仏教交流寺院は、静けさと調和が息づく場所です。<br>
-              古来より伝わる修行の空気の中で、<br>
-              心を整え、呼吸をゆるめ、日常からそっと離れる時間を過ごします。
+              Unkyo Buddhist Exchange は、中日両国各地の古刹・名刹と連携し、<br>
+              共同法要や巡礼、文化プログラムをともに企画・運営しています。<br>
+              ここで紹介する寺院は、その一部です。
             </p>
             <div class="temples-symbol">
               <!-- 中央の小さなアイコン（任意の画像でOK） -->
@@ -284,55 +290,55 @@
               <!-- 1 -->
               <article class="temple-card">
                 <div class="temple-image-wrap">
-                  <img src="images/江苏扬州 大明寺1.webp" alt="江苏扬州・大明寺" />
+                  <img src="images/江苏扬州 大明寺1.webp" alt="江苏扬州・大明寺（中日交流提携寺院）" />
                   <button class="temple-card-more" aria-label="詳細を見る">&gt;</button>
                 </div>
 
                 <div class="temple-card-meta">
                   <span class="temple-card-date">2025/11/25</span>
-                  <span class="temple-card-name">江苏扬州・大明寺（中日交流提携寺院）</span>
+                  <span class="temple-card-name">江苏扬州・大明寺</span>
                 </div>
               </article>
 
               <!-- 2 -->
               <article class="temple-card">
                 <div class="temple-image-wrap">
-                  <img src="images/国清寺1.jpg" alt="浙江天台・国清寺" />
+                  <img src="images/国清寺1.jpg" alt="浙江天台・国清寺（天台教学交流）" />
                   <button class="temple-card-more" aria-label="詳細を見る">
                     &gt;
                   </button>
                 </div>
                 <div class="temple-card-meta">
                   <span class="temple-card-date">2025/06/11</span>
-                  <span class="temple-card-name">浙江天台・国清寺（天台教学交流）</span>
+                  <span class="temple-card-name">浙江天台・国清寺</span>
                 </div>
               </article>
 
               <!-- 3 -->
               <article class="temple-card">
                 <div class="temple-image-wrap">
-                  <img src="images/灵隐寺.jpg" alt="浙江杭州・霊隠寺" />
+                  <img src="images/灵隐寺.jpg" alt="浙江杭州・霊隠寺（禅文化交流）" />
                   <button class="temple-card-more" aria-label="詳細を見る">
                     &gt;
                   </button>
                 </div>
                 <div class="temple-card-meta">
                   <span class="temple-card-date">2025/xx/xx</span>
-                  <span class="temple-card-name">浙江杭州・霊隠寺（禅文化交流）</span>
+                  <span class="temple-card-name">浙江杭州・霊隠寺</span>
                 </div>
               </article>
 
               <!-- 4 -->
               <article class="temple-card">
                 <div class="temple-image-wrap">
-                  <img src="images/鸡鸣寺1.jpg" alt="江蘇南京・古鶏鳴寺" />
+                  <img src="images/鸡鸣寺1.jpg" alt="江蘇南京・古鶏鳴寺（歴史研究連携）" />
                   <button class="temple-card-more" aria-label="詳細を見る">
                     &gt;
                   </button>
                 </div>
                 <div class="temple-card-meta">
                   <span class="temple-card-date">2025/xx/xx</span>
-                  <span class="temple-card-name">江蘇南京・古鶏鳴寺（歴史研究連携）</span>
+                  <span class="temple-card-name">江蘇南京・古鶏鳴寺</span>
                 </div>
               </article>
             </div>
@@ -372,17 +378,19 @@
 
         <div class="events-grid">
 
+          <!-- 左侧：大图卡片 -->
           <article class="event-feature-card">
             <div class="event-feature-media">
-              <img src="images/fashi.jpg" alt="中国仏教界・海上シルクロード巡礼航海">
+              <img src="images/fashi.jpg" alt="中日仏教海上交流プロジェクト">
 
               <div class="event-date-pill">2026/06/19</div>
 
               <div class="event-feature-footer">
                 <div class="event-feature-text-block">
-                  <h3 class="event-feature-title">中国仏教界・海上シルクロード巡礼航海</h3>
+                  <h3 class="event-feature-title">中日仏教・海上シルクロード交流巡礼</h3>
                   <p class="event-feature-desc">
-                    中国仏教界が初めて大規模に実施する海上巡礼・文化交流の航海イベント。
+                    海上シルクロードゆかりの港町をめぐりながら、
+                    中日僧侶・研究者・信徒が共同で法要と文化交流プログラムを行う巡礼プロジェクト。
                   </p>
                 </div>
                 <button class="event-feature-more" aria-label="詳細を見る">
@@ -392,7 +400,9 @@
             </div>
           </article>
 
+          <!-- 右侧：列表卡片 -->
           <div class="event-list">
+
             <article class="event-item-card">
               <div class="event-item-body">
                 <div class="event-item-date">
@@ -401,8 +411,8 @@
                   </span>
                   <span>2026/06/18</span>
                 </div>
-                <h4 class="event-item-title">全国仏教文化フォーラム</h4>
-                <p class="event-item-desc">仏教文化・歴史研究・国際交流をテーマとした全国規模のフォーラム。</p>
+                <h4 class="event-item-title">中日仏教文化フォーラム</h4>
+                <p class="event-item-desc">仏教史・文化・現代社会における役割をテーマとした中日共同フォーラム。</p>
               </div>
               <button class="event-item-more" aria-label="詳細を見る">
                 <span>›</span>
@@ -417,8 +427,8 @@
                   </span>
                   <span>2026　春</span>
                 </div>
-                <h4 class="event-item-title">天台宗・国清寺 禅修週間</h4>
-                <p class="event-item-desc">天台宗の総本山で行われる禅修・戒律研修プログラム。</p>
+                <h4 class="event-item-title">天台宗・国清寺 交流禅修週間</h4>
+                <p class="event-item-desc">天台教学を軸とした禅修・講座・交流セッションを行う中日共同プログラム。</p>
               </div>
               <button class="event-item-more" aria-label="詳細を見る">
                 <span>›</span>
@@ -433,8 +443,8 @@
                   </span>
                   <span>2026　夏</span>
                 </div>
-                <h4 class="event-item-title">普陀山・観音文化祭</h4>
-                <p class="event-item-desc">観音信仰・巡礼行事・水陸法会などを含む年間最大規模の祭典。</p>
+                <h4 class="event-item-title">普陀山・観音信仰文化交流祭</h4>
+                <p class="event-item-desc">観音信仰をテーマにした中日共同法会、講演、芸術公演などを実施。</p>
               </div>
               <button class="event-item-more" aria-label="詳細を見る">
                 <span>›</span>
@@ -450,8 +460,8 @@
                   </span>
                   <span>2026</span>
                 </div>
-                <h4 class="event-item-title">五台山・観音法会</h4>
-                <p class="event-item-desc">五台山で開催される大規模な仏教祈祷・講経・巡礼行事。</p>
+                <h4 class="event-item-title">五台山・中日仏教対話集会</h4>
+                <p class="event-item-desc">五台山において、僧侶・研究者・市民が参加する対話と祈りの集いを開催。</p>
               </div>
               <button class="event-item-more" aria-label="詳細を見る">
                 <span>›</span>
@@ -464,30 +474,31 @@
 
     <!-- 禅旅の法師たち Section -->
     <section class="masters-section" id="masters">
-      <!-- backgroud -->
+      <!-- 背景图层 -->
       <div class="masters-bg"></div>
 
-      <!-- content -->
+      <!-- 内容层 -->
       <div class="masters-inner">
-        <!-- title -->
+        <!-- 标题 -->
         <header class="masters-header">
-          <h2 class="masters-title">日中仏教交流、それは一度きりでは終わらない対話</h2>
+          <h2 class="masters-title">中日仏教交流、それは一度きりでは終わらない対話</h2>
           <p class="masters-lead">
             一度の訪問や行事だけではなく、<br />
             寺院と寺院、人と人が、時間をかけて信頼を育てていくことを大切にしています。
           </p>
         </header>
 
+        <!-- 白板区域：随机散落的卡片 -->
         <div class="masters-board">
-          <!-- card 1 -->
+          <!-- 卡片 1 -->
           <article class="master-card master-card-1">
             <div class="master-card-header">
               <img class="master-avatar" src="images/chanshi.webp" alt="法師1" />
               <div class="master-meta">
                 <div class="master-name">慧心</div>
-                <div class="master-role">寺院住職</div>
+                <div class="master-role">中国・寺院住職</div>
               </div>
-              <span class="master-tag">随縁</span>
+              <span class="master-tag">交流顧問</span>
             </div>
             <p class="master-quote">
               一つひとつの出会いが、長い歴史の続きをともに書いていく頁になります。
@@ -500,12 +511,12 @@
               <img class="master-avatar" src="images/chanshi.webp" alt="法師2" />
               <div class="master-meta">
                 <div class="master-name">静源</div>
-                <div class="master-role">僧侶</div>
+                <div class="master-role">日本・僧侶</div>
               </div>
-              <span class="master-tag">随縁</span>
+              <span class="master-tag">ネットワーク代表</span>
             </div>
             <p class="master-quote">
-              心が静まるとき、世界の輪郭もやさしく変わります。
+              他国の寺院を訪れることは、自分の寺をあらためて見つめ直す機会でもあります。
             </p>
           </article>
 
@@ -515,12 +526,12 @@
               <img class="master-avatar" src="images/chanshi.webp" alt="法師3" />
               <div class="master-meta">
                 <div class="master-name">明照</div>
-                <div class="master-role">老師</div>
+                <div class="master-role">仏教研究者</div>
               </div>
-              <span class="master-tag">随縁</span>
+              <span class="master-tag">学術連携</span>
             </div>
             <p class="master-quote">
-              何かを足すのではなく、手放すことから始まります。
+              史料と現場、双方から学ぶことで、中日仏教のつながりはより立体的に見えてきます。
             </p>
           </article>
 
@@ -530,12 +541,12 @@
               <img class="master-avatar" src="images/chanshi.webp" alt="法師4" />
               <div class="master-meta">
                 <div class="master-name">玄空</div>
-                <div class="master-role">僧侶</div>
+                <div class="master-role">青年僧侶</div>
               </div>
-              <span class="master-tag">随縁</span>
+              <span class="master-tag">次世代交流</span>
             </div>
             <p class="master-quote">
-              歩みをとめて、ただ今ここに在る自分を感じてみましょう。
+              若い世代同士が交流することで、仏教はこれからの社会とも自然につながっていきます。
             </p>
           </article>
 
@@ -545,12 +556,12 @@
               <img class="master-avatar" src="images/chanshi.webp" alt="法師5" />
               <div class="master-meta">
                 <div class="master-name">妙音</div>
-                <div class="master-role">禅修指導</div>
+                <div class="master-role">文化プロジェクト担当</div>
               </div>
-              <span class="master-tag">随縁</span>
+              <span class="master-tag">文化交流</span>
             </div>
             <p class="master-quote">
-              小さな「ありがとう」が、心の灯りをそっとともします。
+              仏教音楽や香・茶・書などの文化は、誰もが自然に参加できる交流の入り口になります。
             </p>
           </article>
         </div>
@@ -562,47 +573,53 @@
 
         <p class="zen-subtitle">THE WAY OF SINO-JAPANESE BUDDHIST EXCHANGE</p>
 
-        <h2 class="zen-title">私たちが大切にしている、日中仏教交流のあり方</h2>
+        <h2 class="zen-title">私たちが大切にしている、中日仏教交流のあり方</h2>
 
         <div class="zen-block">
           <h3 class="zen-heading">ゆっくりと：時間を共有する交流</h3>
           <p class="zen-text">
-            互いの寺院を訪ね、同じ空間で法要や食事、散策の時間をともにすることから交流は始まります。観光のスピードではなく、滞在を通じて関係を育てる「ゆっくりとした交流」を重ねていきます。
+            互いの寺院を訪ね、同じ空間で法要や食事、散策の時間をともにすることから交流は始まります。
+            観光のスピードではなく、滞在を通じて関係を育てる「ゆっくりとした交流」を重ねていきます。
           </p>
         </div>
 
         <div class="zen-block">
           <h3 class="zen-heading">安頓：それぞれの場を尊重する</h3>
           <p class="zen-text">
-            日本・中国、それぞれの寺院には、それぞれの歴史と信仰のかたちがあります。どちらかを一方的に広げるのではなく、お互いの場を尊重しながら学び合う姿勢を大切にしています。
+            中国・日本、それぞれの寺院には、それぞれの歴史と信仰のかたちがあります。
+            どちらかを一方的に広げるのではなく、お互いの場を尊重しながら学び合う姿勢を大切にしています。
           </p>
         </div>
 
         <div class="zen-block">
           <h3 class="zen-heading">沈黙：言葉をこえた対話</h3>
           <p class="zen-text">
-            共に坐り、祈る時間には、翻訳を必要としない対話があります。礼拝・読経・沈黙のひとときが、国境や言語の違いをこえたつながりを静かに育ててくれます。
+            共に坐り、祈る時間には、翻訳を必要としない対話があります。
+            礼拝・読経・沈黙のひとときが、国境や言語の違いをこえたつながりを静かに育ててくれます。
           </p>
         </div>
 
         <div class="zen-block">
           <h3 class="zen-heading">つながる：寺院・研究者・市民</h3>
           <p class="zen-text">
-            僧侶だけでなく、研究者、学生、市民も交流の大切な担い手です。共同シンポジウムやオンライン勉強会、ボランティア参加など、さまざまな立場から関われる場をひらいています。
+            僧侶だけでなく、研究者、学生、市民も交流の大切な担い手です。
+            共同シンポジウムやオンライン勉強会、ボランティア参加など、さまざまな立場から関われる場をひらいています。
           </p>
         </div>
 
         <div class="zen-block">
           <h3 class="zen-heading">文化：非遺に受け継がれた智慧</h3>
           <p class="zen-text">
-            寺院建築、仏像、香、茶、書、法楽など、日中両国には多くの無形文化遺産が息づいています。それらを守り、次世代に伝えるための記録・展示・体験プログラムを、現地の寺院や職人と連携して進めています。
+            寺院建築、仏像、香、茶、書、法楽など、中日両国には多くの無形文化遺産が息づいています。
+            それらを守り、次世代に伝えるための記録・展示・体験プログラムを、現地の寺院や職人と連携して進めています。
           </p>
         </div>
 
         <div class="zen-block">
           <h3 class="zen-heading">回帰：日常へ持ち帰る気づき</h3>
           <p class="zen-text">
-            交流の旅が終わるとき、本当の始まりが日常の暮らしの中で始まります。学びや気づきを自国の寺院や地域へ持ち帰り、新たな実践として根づかせていくことを支える仕組みづくりにも取り組んでいます。
+            交流の旅が終わるとき、本当の始まりが日常の暮らしの中で始まります。
+            学びや気づきを自国の寺院や地域へ持ち帰り、新たな実践として根づかせていくことを支える仕組みづくりにも取り組んでいます。
           </p>
         </div>
 
@@ -612,43 +629,45 @@
     <section class="experience-section" id="experience">
       <div class="experience-title">
         <h2>仏教を通じて学び、交流し、歩み寄る</h2>
-        <p>心で感じ、実際の場で出会う</p>
+        <p>心で感じ、実際の場で出会うプログラム</p>
       </div>
 
       <div class="experience-list">
+        <!-- 01：默认展开 -->
         <article class="exp-item open">
           <div class="exp-head">
             <span class="exp-number">01</span>
+
+            <!-- 小缩略图：未展开时显示，展开时会淡出缩小 -->
             <div class="exp-thumb">
-              <img src="images/exp01.jpg" alt="仏縁の数珠・ブレスレット">
+              <img src="images/exp01.jpg" alt="オンライン法話・勉強会">
             </div>
 
-            <span class="exp-title">仏縁の数珠・ブレスレット</span>
+            <span class="exp-title">オンライン法話・勉強会</span>
             <button class="exp-toggle" type="button">×</button>
           </div>
+
+          <!-- 展开内容 -->
           <div class="exp-body">
             <div class="exp-body-inner">
               <div class="exp-image">
-                <img src="images/exp01.jpg" alt="仏縁の数珠・ブレスレット">
+                <img src="images/exp01.jpg" alt="オンライン法話・勉強会">
               </div>
 
               <div class="exp-content">
-                <h3>仏縁の数珠・ブレスレット</h3>
+                <h3>オンライン法話・勉強会</h3>
                 <p class="exp-desc">
-                  数珠は、日本と中国の仏教に共通する大切な法具であり、<br>
-                  一珠一珠に「心を整え、仏とつながる」という願いが込められています。<br>
-                  白檀、菩提子、瑠璃など、素材により象徴する意味も異なります。
+                  中日両国の僧侶や研究者がオンラインで法話や講義を行い、参加者と質疑応答を行うプログラムです。
                 </p>
 
                 <div class="exp-number-box">
-                  <span class="num">108</span>
-                  <span class="label">煩悩を象徴する珠の数</span>
+                  <span class="num">80+</span>
+                  <span class="label">年間セッション・アーカイブ</span>
                 </div>
 
                 <p class="exp-detail">
-                  数珠は読経時の法具であると同時に、日常で身につける守りの象徴でもあります。<br>
-                  日中仏教交流においては、「祈り」と「ご縁」を表す贈り物として用いられ、<br>
-                  静かで深い心のつながりを示す文化的アイテムとされています。
+                  テーマ例：中日仏教交流史、禅の現代的意義、非遺としての寺院文化など。<br>
+                  海外からも参加できるよう、逐次通訳や資料の多言語化にも取り組んでいます。
                 </p>
 
                 <button class="exp-btn" type="button">詳しく見る</button>
@@ -657,42 +676,39 @@
           </div>
         </article>
 
+        <!-- 02：默认收起 -->
         <article class="exp-item">
           <div class="exp-head">
             <span class="exp-number">02</span>
 
             <div class="exp-thumb">
-              <img src="images/exp02.jpg" alt="仏香と香文化">
+              <img src="images/exp02.jpg" alt="寺院訪問・交流ツアー">
             </div>
 
-            <span class="exp-title">仏香と香文化</span>
+            <span class="exp-title">寺院訪問・交流ツアー</span>
             <button class="exp-toggle" type="button">＋</button>
           </div>
 
           <div class="exp-body">
             <div class="exp-body-inner">
               <div class="exp-image">
-                <img src="images/exp02.jpg" alt="仏香と香文化">
+                <img src="images/exp02.jpg" alt="寺院訪問・交流ツアー">
               </div>
 
               <div class="exp-content">
-                <h3>仏香と香文化</h3>
+                <h3>寺院訪問・交流ツアー</h3>
                 <p class="exp-desc">
-                  仏前に供える香は「香雲供養」と呼ばれ、<br>
-                  その清らかな香気は身心を浄め、俗界と清浄世界をつなぐ象徴とされています。
+                  中日両国の寺院を互いに訪ね合い、共同法要や座談会、文化体験を行う少人数制の交流ツアーです。
                 </p>
 
                 <div class="exp-number-box">
-                  <span class="num">100+</span>
-                  <span class="label">伝統的な香材と調香法</span>
+                  <span class="num">10+</span>
+                  <span class="label">年間開催ツアー</span>
                 </div>
 
                 <p class="exp-detail">
-                  日本と中国には、異なる香文化が受け継がれています。<br>
-                  ・日本：和香の伝統を持ち、麝香・桂皮などを繊細に調香して作られる上品な香り<br>
-                  ・中国：沈香、白檀、チベット香など天然素材を中心とした力強い香り<br><br>
-                  香道は仏教に由来する精神文化であり、供物としてだけでなく、<br>
-                  心を整え、静寂へ導くための修行としても大切にされています。
+                  一般の団体旅行とは異なり、現地寺院との事前調整を行い、信仰と文化に配慮した行程を組み立てます。<br>
+                  僧侶・研究者・市民がそれぞれの立場から参加できるプログラムを用意しています。
                 </p>
 
                 <button class="exp-btn" type="button">詳しく見る</button>
@@ -701,44 +717,39 @@
           </div>
         </article>
 
+        <!-- 03：默认收起 -->
         <article class="exp-item">
           <div class="exp-head">
             <span class="exp-number">03</span>
 
             <div class="exp-thumb">
-              <img src="images/exp03.jpg" alt="無形文化遺産：油紙傘づくり">
+              <img src="images/exp03.jpg" alt="共同プロジェクトとネットワークづくり">
             </div>
 
-            <span class="exp-title">無形文化遺産：油紙傘づくり</span>
+            <span class="exp-title">共同プロジェクトとネットワーク</span>
             <button class="exp-toggle" type="button">＋</button>
           </div>
 
           <div class="exp-body">
             <div class="exp-body-inner">
               <div class="exp-image">
-                <img src="images/exp03.jpg" alt="無形文化遺産：油紙傘づくり">
+                <img src="images/exp03.jpg" alt="共同プロジェクトとネットワークづくり">
               </div>
 
               <div class="exp-content">
-                <h3>無形文化遺産：油紙傘づくり</h3>
+                <h3>共同プロジェクトとネットワークづくり</h3>
                 <p class="exp-desc">
-                  油紙傘は、中国の伝統的な無形文化遺産であり、<br>
-                  民間信仰・祭礼・舞台芸能などで用いられる象徴的な工芸品です。
+                  史料調査、文化財の記録、若手僧侶育成、地域連携など、テーマ別の共同プロジェクトを立ち上げています。
                 </p>
 
                 <div class="exp-number-box">
-                  <span class="num">72</span>
-                  <span class="label">骨組みから仕上げまでの手仕事</span>
+                  <span class="num">1day</span>
+                  <span class="label">ワークショップ・企画会議</span>
                 </div>
 
                 <p class="exp-detail">
-                  一本の油紙傘には、多くの工程と職人の技が込められています。<br>
-                  ・楠木による細密な傘骨づくり<br>
-                  ・手漉き紙の貼り合わせ<br>
-                  ・防水と保護のための桐油塗り<br>
-                  ・伝統文様の手描き装飾<br><br>
-                  円形の傘は「円満」や「守護」を象徴し、<br>
-                  日中の文化交流においても、祝福と良縁を表す工芸として大切にされています。
+                  定期的なオンライン会議や現地ワークショップを通じて、プロジェクトメンバー同士が学び合いながら、
+                  中長期的な取り組みを共に進めていきます。
                 </p>
 
                 <button class="exp-btn" type="button">詳しく見る</button>
@@ -749,31 +760,36 @@
       </div>
     </section>
 
-    <!-- Programs -->
+
+
+
+    <!-- Experience Programs -->
     <section class="programs">
       <div class="container">
-        <h2>日中仏教と文化を<br>さまざまな角度から学び合う</h2>
+        <h2>中日仏教と文化を<br>さまざまな角度から学び合うプログラム</h2>
         <div class="programs-list">
           <div class="program-item">
             <div class="program-image">
               <img
                 src="https://images.pexels.com/photos/8329643/pexels-photo-8329643.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
-                width="433" height="650" alt="日本と中国の茶文化交流ワークショップのイメージ"">
+                width="433" height="650"
+                alt="中国と日本の茶文化交流ワークショップのイメージ">
             </div>
-            <div class=" program-content">
-              <h3>茶・香・書による文化交流</h3>
-              <p>仏教とともに発展してきた茶・香・書などの文化を通じて、日中両国の参加者がゆっくり語り合う場をひらきます。</p>
+            <div class="program-content">
+              <h3>茶・香・書による文化交流プログラム</h3>
+              <p>仏教とともに発展してきた茶・香・書などの文化を通じて、中日両国の参加者がゆっくり語り合う場をひらきます。</p>
             </div>
           </div>
           <div class="program-item">
             <div class="program-image">
               <img
                 src="https://images.pexels.com/photos/5779194/pexels-photo-5779194.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                width="868" height="1300" alt="寺院の仏像と文化財のイメージ">
+                width="868" height="1300"
+                alt="寺院の仏像と文化財のイメージ">
             </div>
             <div class="program-content">
-              <h3>文化財・非遺の記録と継承</h3>
-              <p>院建築や仏像、法要、民間信仰などの記録・アーカイブ化を、現地の僧侶・研究者・住民と協力して進めます。</p>
+              <h3>文化財・非遺の記録と継承プロジェクト</h3>
+              <p>寺院建築や仏像、法要、民間信仰などの記録・アーカイブ化を、現地の僧侶・研究者・住民と協力して進めます。</p>
             </div>
           </div>
           <div class="program-item">
@@ -781,129 +797,94 @@
               <img
                 src="https://images.pexels.com/photos/8285057/pexels-photo-8285057.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
                 width="1949" height="1300"
-                alt="Explore the tranquil beauty of a Shinto shrine nestled in Kamakura's lush green foliage.">
+                alt="中日両国の寺院を結ぶ巡礼路のイメージ">
             </div>
             <div class="program-content">
-              <h3>四季に寄り添う寺院文化交流</h3>
-              <p>春の桜、夏の青もみじ、秋の紅葉、冬の雪景色。<br>
-                四季折々の風景とともに、寺院ごとの歴史・行事・祈りを体験する<br>
-                季節の移ろいの中で、地域の信仰や伝統文化に触れ、<br>
-                寺院と人、人と人が静かにつながっていく時間を共に育みます。</p>
+              <h3>巡礼・スタディツアー</h3>
+              <p>歴史的にゆかりのある寺院を訪ねながら、中日仏教交流の足跡をたどる少人数制スタディツアーを企画・実施します。</p>
             </div>
           </div>
           <div class="program-item">
             <div class="program-image">
               <img
                 src="https://images.pexels.com/photos/6249252/pexels-photo-6249252.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                width="975" height="1300" alt="寺院に集う人々と小さな仏像">
+                width="975" height="1300"
+                alt="寺院に集う人々と小さな仏像のイメージ">
             </div>
             <div class="program-content">
-              <h3>寺院に集う人々と小さな仏像</h3>
-              <p>寺院には、僧侶だけでなく、地域の人々、参拝者、学びを求める若者など、<br>
-                さまざまな人々が集い、祈りと交流の時間を共有しています。<br><br>
-                その場にそっと置かれる小さな仏像は、祈りの象徴であると同時に、<br>
-                人と人を静かにつなぐ“よりどころ”として大切にされています。<br>
+              <h3>次世代のための学びとネットワークづくり</h3>
+              <p>若手僧侶・学生・市民が参加できるオンライン講座や交流プログラムを通じて、未来へ続くネットワークづくりを支えます。</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="temple-future-section">
-      <div class="temple-future-bg">
-        <img src="images/temple-future.png" alt="静寂に包まれた寺院と山々の風景">
-      </div>
-
-      <div class="temple-future-inner">
-        <h2 class="temple-future-title">
-          寺院は、過去だけでなく<br>未来をともに育てる場所でもある
-        </h2>
-
-        <p class="temple-future-desc">
-          長い歳月の中で積み重ねられてきた祈り、建築、教え、文化。<br>
-          寺院はそれらを守りながら、人々の心に寄り添い、<br>
-          次の世代へ静かに橋をかけていく存在です。<br><br>
-          山々の息づかいとともに広がるこの風景には、<br>
-          受け継がれてきた智慧と、これからの未来を照らす光が宿っています。
-        </p>
+    <!-- Final Section -->
+    <section class="final-section">
+      <div class="final-content">
+        <h2>寺院は、過去だけでなく<br>未来をともに育てる場所でもある</h2>
+        <div class="final-image">
+          <img
+            src="https://images.pexels.com/photos/34999951/pexels-photo-34999951.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+            width="433" height="650"
+            alt="湖畔の鳥居と山並みがひろがる静かな風景。中日仏教交流の象徴的なイメージ。">
+        </div>
       </div>
     </section>
 
-
     <!-- Gallery Section -->
-    <!-- Gallery Section -->
-    <section class="bottom-gallery zen-experience">
+    <section class="bottom-gallery">
       <div class="container">
-
-        <!-- タイトル & 説明 -->
-        <div class="zen-experience-head">
-          <h2 class="zen-experience-title">禅に触れる体験</h2>
-          <p class="zen-experience-desc">
-            石に刻まれた祈り、木組みの天井、静寂に佇む堂、祈りを宿す塔、<br>
-            そして人が集い語り合う空間。<br>
-            それぞれの風景が、寺院に受け継がれてきた信仰と文化の<br>
-            ちがう側面を静かに映し出しています。
-          </p>
+        <h2>四季を通じて続いていく中日仏教交流</h2>
+        <div class="gallery-grid-bottom">
+          <div class="gallery-item-bottom">
+            <img
+              src="https://images.pexels.com/photos/34974344/pexels-photo-34974344.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+              width="366" height="650" alt="春、桜の下で行われる中日仏教交流行事のイメージ">
+            <h4>春　花の下での交流法要</h4>
+          </div>
+          <div class="gallery-item-bottom">
+            <img
+              src="https://images.pexels.com/photos/34981036/pexels-photo-34981036.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+              width="1082" height="650" alt="夏の青もみじと寺院のイメージ">
+            <h4>夏　青もみじと研修プログラム</h4>
+          </div>
+          <div class="gallery-item-bottom">
+            <img
+              src="https://images.pexels.com/photos/35025696/pexels-photo-35025696.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"
+              width="433" height="650"
+              alt="秋、紅葉に彩られた寺院の回廊を歩く僧侶の姿。">
+            <h4>秋　紅葉に包まれた巡礼の道</h4>
+          </div>
+          <div class="gallery-item-bottom">
+            <img
+              src="https://images.pexels.com/photos/34521639/pexels-photo-34521639.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+              width="867" height="1300"
+              alt="冬、雪化粧をした寺院での静かな祈りのイメージ。">
+            <h4>冬　雪の寺院での静かな祈り</h4>
+          </div>
         </div>
-
-        <!-- 横並びギャラリー -->
-        <div class="zen-experience-gallery">
-
-          <div class="zen-exp-item">
-            <img src="images/zen01.jpg" alt="祈りの刻まれた石">
-            <span class="zen-exp-label">祈りの刻まれた石（信仰の記憶）</span>
-          </div>
-
-          <div class="zen-exp-item">
-            <img src="images/zen02.jpg" alt="木の温もりの天井">
-            <span class="zen-exp-label">木の温もりの天井（寺院建築の美）</span>
-          </div>
-
-          <div class="zen-exp-item">
-            <img src="images/zen03.jpg" alt="静寂に佇む堂">
-            <span class="zen-exp-label">静寂に佇む堂（瞑想と心の間）</span>
-          </div>
-
-          <div class="zen-exp-item">
-            <img src="images/zen04.jpg" alt="祈りを宿す塔">
-            <span class="zen-exp-label">祈りを宿す塔（功徳と供養）</span>
-          </div>
-
-          <div class="zen-exp-item">
-            <img src="images/zen05.jpg" alt="心を整える空間">
-            <span class="zen-exp-label">心を整える空間（学びと対話）</span>
-          </div>
-
-        </div>
-
-        <!-- 説明テキスト -->
-        <div class="zen-experience-footer">
-          <h3>寺院の文化に出会う</h3>
-          <p>祈り・建築・禅修・供養・学び。<br>
-            五つの風景を通して、中日仏教文化の息づかいに触れる時間をご一緒に。</p>
-          <a href="#contact" class="zen-exp-btn">詳しく見る</a>
-        </div>
-
       </div>
     </section>
-
   </div>
 
   <!-- Footer Hero Section -->
   <section class="footer-hero" id="footer-hero">
+    <!-- 背景图层 -->
     <div class="footer-hero-bg"></div>
 
     <!-- 内容层 -->
     <div class="footer-hero-inner">
       <!-- 顶部：Logo -->
       <header class="footer-hero-top">
-        <div class="footer-logo"><img src="images/logo-main.png" alt="UnkyoTravel"></div>
+        <div class="footer-logo"><img src="images/logo-main.png" alt="Unkyo Buddhist Exchange"></div>
       </header>
 
       <div class="footer-hero-center">
         <h2 class="footer-hero-title">
           仏教と文化の力で、<br />
-          日中をむすぶ静かな橋をかける
+          中日をむすぶ静かな橋をかける
         </h2>
         <p class="footer-hero-sub">
           寺院・研究者・市民が、国境をこえて学び合い支え合うネットワークづくりを進めています。
@@ -911,8 +892,9 @@
         <a href="#contact" class="footer-hero-btn">協力・参加について問い合わせ</a>
       </div>
 
+      <!-- 底部：© + 链接 -->
       <div class="footer-hero-bottom">
-        <span class="footer-copy">© 2026</span>
+        <span class="footer-copy">© 2026 Unkyo Buddhist Exchange</span>
         <nav class="footer-bottom-links">
           <a href="#privacy">Privacy Policy</a>
           <a href="#terms">Terms &amp; Conditions</a>
