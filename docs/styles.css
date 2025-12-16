@@ -1116,37 +1116,66 @@ body.menu-open {
   filter: brightness(1.03);
 }
 
-/* 右上角 > 按钮 */
+/* 右上角 · 高级圆形箭头按钮 */
 .temple-card-more {
+  text-decoration: none;
   position: absolute;
   top: 14px;
-  right: 14px;
-  width: 46px;
-  height: 46px;
-  border-radius: 999px;
-  border: none;
-  background: rgba(0, 0, 0, 0.2);
-  color: #fff;
-  font-size: 18px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.32);
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   opacity: 0;
-  transform: translateY(-6px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform: translateY(0px) scale(0.96);
+  transition:
+    opacity .28s ease,
+    transform .28s ease,
+    background .28s ease,
+    box-shadow .28s ease;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
   cursor: pointer;
 }
 
-.temple-card-more:hover {
-  transform: scale(1.08);
-  filter: brightness(1.05);
+/* 箭头本体 */
+.temple-card-more::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-top: 1.8px solid #fff;
+  border-right: 1.8px solid #fff;
+
+  /* 核心：先旋转，再微调 */
+  transform: rotate(45deg) translate(-0.5px, 0.5px);
+  transition: transform .28s ease;
 }
 
-/* hover 时按钮出现 */
+/* 卡片 hover：按钮出现 */
 .temple-card:hover .temple-card-more {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
 }
+
+/* hover 状态：更有质感 */
+.temple-card-more:hover {
+  background: rgba(0, 0, 0, 0.46);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .25);
+}
+
+/* hover 时箭头轻微前进 */
+/* .temple-card-more:hover::before {
+  transform: translateX(2px) rotate(45deg);
+} */
+
+
 
 /* 下半部：日期 + 名称 */
 .temple-card-meta {
@@ -1257,6 +1286,12 @@ body.menu-open {
 /* 鼠标移入 wrapper 时按钮出现 */
 .temple-gallery-wrapper:hover .temple-arrow {
   opacity: 1;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .temple-arrow {
+    display: none !important;
+  }
 }
 
 /* ================= 卷轴 Section ================= */
@@ -2288,7 +2323,8 @@ body.menu-open {
   overflow: hidden;
   transition: transform 0.3s ease;
   display: flex;
-  flex-direction: column; /* ← 新增，确保内容竖排 */
+  flex-direction: column;
+  /* ← 新增，确保内容竖排 */
 }
 
 .program-item:hover {
@@ -2323,7 +2359,8 @@ body.menu-open {
 }
 
 .program-content .zen-exp-btn {
-  margin-top: auto;    /* ← 关键代码：把按钮推到底部 */
+  margin-top: auto;
+  /* ← 关键代码：把按钮推到底部 */
   align-self: flex-start;
   padding: 10px 22px;
   border-radius: 999px;
@@ -2332,14 +2369,14 @@ body.menu-open {
   font-size: 0.85rem;
   font-weight: 600;
   text-decoration: none;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
   transition: all 0.25s ease;
 }
 
 .program-content .zen-exp-btn:hover {
   background: black;
   transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(0,0,0,0.28);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.28);
 }
 
 
