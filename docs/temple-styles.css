@@ -62,6 +62,15 @@
 
 }
 
+@font-face {
+  font-family: "Henshan";
+  src:
+    url("/assets/fonts/henshan.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -201,6 +210,7 @@ a {
   border-radius: 12px;
   overflow: hidden;
   transition: opacity 0.8s ease, transform 0.8s ease;
+  filter: brightness(1.28) saturate(1.12) contrast(0.80);
 }
 
 /* 深色叠加层，让文字更清晰 */
@@ -208,7 +218,10 @@ a {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(298deg, #0003 0%, #00000040 83%, #0006 100%);
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, .28) 0%,
+      rgba(0, 0, 0, .18) 45%,
+      rgba(0, 0, 0, .05) 100%);
   pointer-events: none;
 }
 
@@ -326,6 +339,10 @@ a {
   justify-content: center;
   text-align: center;
 }
+
+/* .hero-center>* {
+  transform: translateY(-40px);
+} */
 
 .hero-kicker {
   margin: 0;
@@ -867,7 +884,8 @@ body.menu-open {
 .lead {
   margin: 0 0 14px;
   color: var(--muted);
-  line-height: 1.8
+  line-height: 1.8;
+  font-size: 15px;
 }
 
 .facts {
@@ -1087,6 +1105,139 @@ body.menu-open {
   line-height: 1.7
 }
 
+.scroll-panel {
+  /* 卷轴背景图 */
+  background-image: url("./images/scroll-bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* 透明背景要求：这块本身可以是透明的；如果你要叠在页面上就别给底色 */
+  width: min(980px, 92vw);
+  aspect-ratio: 3 / 4;
+  margin: 24px auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 中间内容区域（像“写在纸上”） */
+.scroll-inner {
+  position: absolute;
+  inset: 10% 10% 16% 10%;
+  /* 控制文字在卷轴里的边距 */
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* 标题 */
+.scroll-title {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(20px, 2.4vw, 28px);
+  letter-spacing: .08em;
+  color: rgba(30, 22, 18, .92);
+}
+
+.sutra-frame {
+  position: relative;
+  padding: 48px 56px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.96)),
+    url("./images/bg-washi-noise.png");
+  /* 可选：宣纸暗纹 */
+  background-size: cover;
+  border: 1px solid rgba(60, 50, 40, 0.25);
+  box-shadow:
+    inset 0 0 40px rgba(0, 0, 0, 0.05),
+    0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.sutra-scroll {
+  position: relative;
+  padding: 56px 48px;
+  background: #f7f3e8;
+}
+
+.sutra-scroll::before,
+.sutra-scroll::after {
+  content: "";
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  height: 1px;
+  background: linear-gradient(to right,
+      transparent,
+      rgba(80, 70, 60, .45),
+      transparent);
+}
+
+.sutra-scroll::before {
+  top: 20px;
+}
+
+.sutra-scroll::after {
+  bottom: 20px;
+}
+
+
+
+/* 打字区域 */
+.scroll-paper,
+#typeArea.type-area-vert {
+  writing-mode: horizontal-tb !important;
+  /* 先把外层恢复正常横排 */
+  white-space: normal !important;
+}
+
+#typeArea {
+  font-family:
+    /* "Shippori Mincho",
+    "Yu Mincho",
+    "游明朝体",
+    "IPA Mincho",
+    serif; */
+    "Henshan", "Shippori Mincho", "Yu Mincho", "游明朝体", "IPA Mincho",
+    serif;
+  font-size: 24px;
+}
+
+#typeArea.type-area-vert {
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: flex-start !important;
+  gap: 14px !important;
+
+  --lh: 1.6em;
+  --rows: 15;
+  height: calc(var(--lh) * var(--rows)) !important;
+
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+}
+
+/* 每列强制纵向堆叠 */
+#typeArea.type-area-vert .type-col {
+  display: flex !important;
+  /* flex-direction: column !important; */
+  flex: 0 0 auto !important;
+
+  /* 竖排只作用在列内 */
+  writing-mode: vertical-rl !important;
+  text-orientation: mixed !important;
+}
+
+/* 每个字固定格子 */
+#typeArea.type-area-vert .type-col .char {
+  display: block !important;
+  height: var(--lh) !important;
+  line-height: var(--lh) !important;
+  width: 1em !important;
+  letter-spacing: 0 !important;
+}
+
+
+
 /* ===== Scroll Section ===== */
 .scroll-section {
   position: relative;
@@ -1281,26 +1432,27 @@ body.menu-open {
 
 /* 时间轴 */
 .timeline {
+  --axisY: 124px;
   position: relative;
-  padding: 6px 6px 0;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding: 26px 0 26px;
 }
 
 .timeline-line {
   position: absolute;
-  top: 56px;
-  left: 10px;
-  right: 24px;
+  top: var(--axisY);
+  left: 1px;
+  right: 1px;
   height: 2px;
   background: rgba(190, 155, 95, .65);
 }
 
 .timeline-arrow {
   position: absolute;
-  top: 49px;
-  right: 10px;
+  top: calc(var(--axisY) - 6px);
+  right: 0px;
   width: 0;
   height: 0;
   border-left: 12px solid rgba(190, 155, 95, .65);
@@ -1311,52 +1463,77 @@ body.menu-open {
 /* 时间轴 item */
 .titem {
   position: relative;
-  padding-top: 4px;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  justify-items: center;
+  text-align: center;
 }
+
 
 .tdot {
-  position: absolute;
-  top: 48px;
-  left: 6px;
   width: 10px;
   height: 10px;
-  border-radius: 999px;
-  background: rgba(190, 155, 95, .9);
-  box-shadow: 0 0 0 3px rgba(251, 247, 239, 1);
+  background: #c9ad7a;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
 }
 
-.tmeta {
-  padding-left: 22px;
-  min-height: 46px;
+.titem .tmeta {
+  margin-bottom: 18px;
+}
+
+.titem .tthumb {
+  margin-top: 18px;
+}
+
+.titem:nth-child(even) {
+  grid-template-rows: auto auto auto;
+}
+
+.titem:nth-child(even) .tthumb {
+  order: -1;
+  margin-bottom: 24px;
+  margin-top: 0;
+}
+
+.titem:nth-child(even) .tmeta {
+  margin-top: 16px;
+}
+
+.titem:nth-child(odd) .tthumb {
+  margin-top: 53px;
 }
 
 .tyear {
-  font-weight: 700;
-  font-size: 13px;
-  color: rgba(43, 36, 31, .88);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
 }
 
 .ttext {
-  font-size: 12px;
-  color: rgba(43, 36, 31, .75);
-  line-height: 1.35;
-  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 160px;
 }
 
 .tthumb {
-  margin-top: 10px;
-  border: 1px solid rgba(0, 0, 0, .18);
-  background: #efe7d6;
-  overflow: hidden;
   aspect-ratio: 4 / 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #efe7d6;
+  padding: 6px;
 }
 
 .tthumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: contrast(1.02) saturate(.95);
-  transition: transform .35s ease;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
 
 .tthumb:hover img {
@@ -1715,11 +1892,23 @@ body.menu-open {
   position: relative;
 }
 
-.guide-map img {
+.gmap-embed {
   width: 100%;
-  height: 360px;
-  object-fit: cover
+  aspect-ratio: 16 / 9;
+  /* 你也可以改 4/3 */
+  border: 1px solid rgba(0, 0, 0, .18);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #efe7d6;
 }
+
+.gmap-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
 
 .guide-map-note {
   position: absolute;
@@ -1843,38 +2032,129 @@ body.menu-open {
   z-index: 2;
 }
 
-/* ========== Closing ========== */
+/* ========== Closing (Redesign) ========== */
 .closing {
   position: relative;
-  padding: 90px 0;
-  background: var(--bg) center/cover no-repeat;
+  overflow: hidden;
+  padding: clamp(72px, 10vh, 120px) 0;
+  /* 用 HTML 的 --bg 来控制背景，没传就 fallback */
+  --bg: url("./images/temple/temple-blur.png");
+
+  background:
+    radial-gradient(1200px 420px at 50% 35%, rgba(255, 255, 255, .18), transparent 60%),
+    linear-gradient(180deg, rgba(10, 8, 6, .18) 0%, rgba(10, 8, 6, .45) 100%),
+    var(--bg);
+  background-size: cover;
+  background-position: center;
 }
 
+/* 用伪元素做“柔焦 + 轻微放大”，不影响文字层 */
+.closing::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  background: var(--bg);
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.06);
+  filter: blur(10px) saturate(.9) contrast(.95);
+  opacity: .55;
+  z-index: 0;
+}
+
+/* 轻微纸感/雾感层：让画面更禅、更干净 */
+.closing::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(900px 360px at 50% 20%, rgba(255, 255, 255, .22), transparent 65%),
+    linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, 0) 40%, rgba(0, 0, 0, .18));
+  mix-blend-mode: screen;
+  opacity: .9;
+  z-index: 1;
+}
+
+/* overlay 改为“更克制”的暗部托底（不再黑得脏） */
 .closing-overlay {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(18, 14, 10, .45), rgba(18, 14, 10, .08) 60%, rgba(18, 14, 10, .50));
+    linear-gradient(180deg,
+      rgba(0, 0, 0, .25) 0%,
+      rgba(0, 0, 0, .12) 45%,
+      rgba(0, 0, 0, .30) 100%);
+  z-index: 2;
 }
 
+/* 内容层 */
 .closing-inner {
   position: relative;
+  z-index: 3;
   text-align: center;
-  color: rgba(255, 255, 255, .95);
+  padding: 0 18px;
+  color: rgba(255, 255, 255, .92);
 }
 
 .closing-inner h2 {
-  margin: 0 0 10px;
-  font-size: clamp(26px, 4vw, 40px);
-  text-shadow: 0 18px 42px rgba(0, 0, 0, .35);
+  margin: 0 0 12px;
+  font-size: clamp(26px, 4vw, 44px);
+  letter-spacing: .08em;
+  text-shadow: 0 14px 34px rgba(0, 0, 0, .35);
 }
 
+/* 文字改成“更高级的白” + 行宽更舒服 */
 .closing-inner p {
-  margin: 0 auto 18px;
-  max-width: 760px;
-  line-height: 1.8;
-  color: rgba(255, 255, 255, .86);
+  margin: 0 auto 22px;
+  max-width: 820px;
+  line-height: 1.9;
+  font-size: 14px;
+  color: rgba(255, 255, 255, .84);
+  text-shadow: 0 10px 24px rgba(0, 0, 0, .25);
 }
+
+/* CTA 更像“结尾印章”：主按钮温润，次按钮克制 */
+.closing .cta-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+/* 如果你已有 .btn 样式，这里只做覆盖增强 */
+.closing .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  letter-spacing: .02em;
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.closing .btn.primary {
+  background: rgba(233, 208, 160, .92);
+  /* 温润金 */
+  color: rgba(30, 24, 16, .92);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, .22);
+  border: 1px solid rgba(255, 255, 255, .22);
+}
+
+.closing .btn.ghost {
+  background: rgba(255, 255, 255, .10);
+  color: rgba(255, 255, 255, .90);
+  border: 1px solid rgba(255, 255, 255, .26);
+  backdrop-filter: blur(6px);
+}
+
+.closing .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, .28);
+}
+
 
 /* ============ Footer Hero 基本布局 ============ */
 .footer-hero {
