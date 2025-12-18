@@ -65,8 +65,45 @@
 @font-face {
   font-family: "Henshan";
   src:
-    url("/assets/fonts/henshan.ttf") format("ttf");
+    url("assets/fonts/henshan.ttf") format("truetype");
   font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "tamanegi";
+  src:
+    url("assets/fonts/tamanegi_kaisho_free.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: "ttedit";
+  src:
+    url("assets/fonts/TTEdit1.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ackaisyo";
+  src:
+    url("assets/fonts/ackaisyo.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "beautiful";
+  src:
+    url("assets/fonts/beautiful.ttf") format("truetype");
+  font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
@@ -1197,9 +1234,9 @@ body.menu-open {
     "游明朝体",
     "IPA Mincho",
     serif; */
-    "Henshan", "Shippori Mincho", "Yu Mincho", "游明朝体", "IPA Mincho",
+    "beautiful", "ackisyo", "ttedit", "Henshan", "Shippori Mincho", "Yu Mincho", "游明朝体", "IPA Mincho",
     serif;
-  font-size: 24px;
+  font-size: 32px;
 }
 
 #typeArea.type-area-vert {
