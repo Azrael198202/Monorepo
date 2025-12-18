@@ -19,7 +19,7 @@
         <section class="hero" id="top" style="background-image: url('images/temple/hero-bg.png');">
             <div class="hero-inner">
                 <header class="hero-top">
-                    <div class="hero-logo"><img src="images/logo-main.png" alt="大明寺1"></div>
+                    <div class="hero-logo"><img src="images/logo-main.png" alt="大明寺1" data-no-zoom="true"></div>
                     <button class="hero-menu-btn" id="heroMenuBtn" aria-label="Open menu">
                         <span></span><span></span><span></span>
                     </button>
@@ -48,7 +48,7 @@
 
                             <div class="hero-menu-body">
                                 <div class="hero-menu-logo">
-                                    <img src="images/logo-b.png" alt="UnkyoTravel">
+                                    <img src="images/logo-b.png" alt="UnkyoTravel" data-no-zoom="true">
                                 </div>
 
                                 <h2 class="hero-menu-title">お問い合わせ</h2>
@@ -188,7 +188,7 @@
                             </div>
 
                             <div class="spirit-banner">
-                                <img src="./images/temple/spirit.png" alt="精神的象徴バナープロジェクト" loading="lazy">
+                                <img src="./images/temple/spirit.png" alt="精神的象徴バナープロジェクト" loading="lazy" data-no-zoom="true">
                                 <div class="spirit-banner-text">
                                     <h3>静をもって心を観じ、行いをもって道を証す</h3>
                                     <p>大明寺の精神を象徴するこの言葉は、静けさの中で、訪れる人それぞれの想いと重なり合います。<br>ページを結ぶ一言として、またブランドの核となるメッセージとして。
@@ -666,6 +666,12 @@
             </div>
         </div>
     </section>
+
+    <!-- Image Lightbox -->
+    <div class="img-lightbox" id="imgLightbox" aria-hidden="true">
+        <div class="img-lightbox-backdrop"></div>
+        <img class="img-lightbox-img" alt="">
+    </div>
 
     <script src="temple-script.js"></script>
 </body>

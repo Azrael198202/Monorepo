@@ -339,5 +339,44 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   })();
 
-  
+
+  /* ===============================
+    * 8. 图片灯箱
+    * =============================== */
+  (function () {
+    const lightbox = document.getElementById("imgLightbox");
+    const lightboxImg = lightbox.querySelector(".img-lightbox-img");
+    const backdrop = lightbox.querySelector(".img-lightbox-backdrop");
+
+    // 页面中所有 img（排除 lightbox 自己的 img）
+    document.querySelectorAll("img:not(.img-lightbox-img)").forEach(img => {
+      img.style.cursor = "zoom-in";
+
+      img.addEventListener("click", (e) => {
+        // 可选：禁止某些 img（比如 icon）
+        if (img.dataset.noZoom === "true") return;
+
+        e.stopPropagation();
+        lightboxImg.src = img.currentSrc || img.src;
+        lightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    function close() {
+      lightbox.setAttribute("aria-hidden", "true");
+      lightboxImg.src = "";
+      document.body.style.overflow = "";
+    }
+
+    backdrop.addEventListener("click", close);
+    lightboxImg.addEventListener("click", close);
+
+    // ESC 关闭
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") close();
+    });
+  })();
+
+
 });
