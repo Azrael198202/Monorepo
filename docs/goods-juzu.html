@@ -17,7 +17,10 @@
     <section class="hero goods-hero" style="background-image:url('./images/goods/hero.jpg')">
       <div class="hero-inner">
         <header class="hero-top">
-          <div class="hero-logo"><img src="images/logo-main.png" alt="Unkyo Buddhist Exchange"></div>
+          <div class="hero-logo">
+            <a href="index.html" aria-label="トップページへ戻る">
+              <img src="images/logo-main.png" alt="Unkyo Buddhist Exchange"></a>
+          </div>
           <button class="hero-menu-btn" id="heroMenuBtn" aria-label="Open menu">
             <span></span><span></span><span></span>
           </button>
@@ -141,7 +144,9 @@
           <article class="goods-card">
             <div class="goods-card-top">
               <span class="goods-badge">01</span>
-              <span class="goods-dotline" aria-hidden="true">••••</span>
+              <span class="card-dots" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+              </span>
             </div>
             <h3 class="goods-h3">意識のアンカー</h3>
             <p class="goods-p">
@@ -153,7 +158,9 @@
           <article class="goods-card">
             <div class="goods-card-top">
               <span class="goods-badge">02</span>
-              <span class="goods-dotline" aria-hidden="true">••••</span>
+              <span class="card-dots" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+              </span>
             </div>
             <h3 class="goods-h3">念誦の「数」を支える</h3>
             <p class="goods-p">
@@ -165,7 +172,9 @@
           <article class="goods-card">
             <div class="goods-card-top">
               <span class="goods-badge">03</span>
-              <span class="goods-dotline" aria-hidden="true">••••</span>
+              <span class="card-dots" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+              </span>
             </div>
             <h3 class="goods-h3">日常へ持ち帰る実践</h3>
             <p class="goods-p">
@@ -210,65 +219,262 @@
       </div>
     </section>
 
-    <!-- Materials -->
+    <!-- ===== Materials (UPDATED) ===== -->
     <section class="goods-section goods-gray" id="materials">
       <div class="container">
+
         <header class="goods-head">
           <h2 class="goods-h2">素材から見る、数珠の個性</h2>
-          <p class="goods-sub">素材は「優劣」ではなく、相性です。触れたときの感覚で選ぶのが自然です。</p>
+          <p class="goods-sub">
+            素材は「優劣」ではなく「相性」です。<br>
+            触れたときの感覚や、歩みたい修行の姿勢に合わせて選ぶのが自然です。
+          </p>
         </header>
 
-        <div class="goods-stack">
-          <article class="goods-slab">
-            <div class="goods-slab-left">
-              <h3 class="goods-h3">木（例：白檀など）</h3>
-              <ul class="goods-ul">
-                <li><b>特徴：</b>軽く、手首に負担が少ない。触感がやわらかい。</li>
-                <li><b>経年：</b>艶が育ち、色味が深まる。</li>
-                <li><b>向き：</b>日常携行、坐禅前の「合図」に。</li>
-              </ul>
-            </div>
-            <div class="goods-slab-right">
-              <div class="goods-chip">落ち着き</div>
-              <div class="goods-chip">手触り</div>
-              <div class="goods-chip">経年美</div>
-            </div>
-          </article>
+        <!-- ===== 木 ===== -->
+        <section class="material-group">
+          <h3 class="material-group-title">
+            木の数珠
+            <span class="group-chip">温かみ</span>
+            <span class="group-chip">経年美</span>
+            <span class="group-chip">日常携行</span>
+          </h3>
+          <p class="material-group-lead">
+            軽やかで温かみがあり、日常と修行を穏やかにつなぐ素材。
+          </p>
 
-          <article class="goods-slab">
-            <div class="goods-slab-left">
-              <h3 class="goods-h3">種子（例：菩提樹の実＝菩提子）</h3>
-              <ul class="goods-ul">
-                <li><b>特徴：</b>一珠ごとに表情があり、自然の揺らぎを感じる。</li>
-                <li><b>象徴：</b>覚り（菩提）に向かう歩みを想起させるモチーフとして親しまれる。</li>
-                <li><b>向き：</b>祈りの「継続」を大切にしたい方に。</li>
-              </ul>
-            </div>
-            <div class="goods-slab-right">
-              <div class="goods-chip">自然の揺らぎ</div>
-              <div class="goods-chip">象徴性</div>
-              <div class="goods-chip">一点もの感</div>
-            </div>
-          </article>
+          <div class="material-items">
 
-          <article class="goods-slab">
-            <div class="goods-slab-left">
-              <h3 class="goods-h3">石（例：瑠璃などの天然石）</h3>
-              <ul class="goods-ul">
-                <li><b>特徴：</b>重みと冷たさがあり、意識を引き戻しやすい。</li>
-                <li><b>表情：</b>光の当たり方で色の深さが変わる。</li>
-                <li><b>向き：</b>儀礼感を大切にしたい、場を整えたい方に。</li>
-              </ul>
-            </div>
-            <div class="goods-slab-right">
-              <div class="goods-chip">重み</div>
-              <div class="goods-chip">透明感</div>
-              <div class="goods-chip">場の印象</div>
-            </div>
-          </article>
-        </div>
+            <!-- 白檀 -->
+            <article class="material-item">
+              <div class="feature-media media-stack">
+                <figure class="media-main">
+                  <button class="imgbtn" type="button" data-lightbox-current aria-label="拡大表示">
+                    <img src="images/goods/1-1.webp" alt="白檀の数珠ブレスレット" loading="lazy">
+                  </button>
+                </figure>
+
+                <div class="media-side">
+                  <button class="media-thumb is-active" type="button" data-src="images/goods/1-1.webp">
+                    <img src="images/goods/1-1.webp" alt="" loading="lazy">
+                  </button>
+                  <button class="media-thumb" type="button" data-src="images/goods/1-2.jpg">
+                    <img src="images/goods/1-2.jpg" alt="" loading="lazy">
+                  </button>
+                  <button class="media-thumb" type="button" data-src="images/goods/1-3.jpg">
+                    <img src="images/goods/1-3.jpg" alt="" loading="lazy">
+                  </button>
+                </div>
+              </div>
+
+              <div class="material-body">
+                <h4>白檀（びゃくだん）</h4>
+                <dl>
+                  <dt>来源</dt>
+                  <dd>インド・東南アジア</dd>
+                  <dt>特性</dt>
+                  <dd>軽く、触感がやわらかい。使うほどに艶が育つ。</dd>
+                  <dt>寓意</dt>
+                  <dd>心を鎮め、内省へ導く「清浄」の象徴。</dd>
+                  <dt>向いている方</dt>
+                  <dd>坐禅・瞑想を始めたばかりの方、日常で静けさを求める方。</dd>
+                </dl>
+              </div>
+
+              <aside class="material-meta">
+                <div class="meta-chips">
+                  <span class="chip">落ち着き</span>
+                  <span class="chip">触感</span>
+                  <span class="chip">経年美</span>
+                </div>
+                <div class="meta-note">
+                  <b>ひと言</b>
+                  <p>坐禅前に手首へそっと触れ、呼吸を整える「合図」として。</p>
+                </div>
+              </aside>
+            </article>
+
+            <!-- 紫檀 -->
+            <article class="material-item">
+              <div class="feature-media media-stack">
+                <figure class="media-main">
+                  <img src="images/goods/2-1.webp" alt="紫檀の数珠ブレスレット" loading="lazy">
+                </figure>
+
+                <div class="media-side">
+                  <button class="media-thumb is-active" type="button" data-src="images/goods/2-1.webp">
+                    <img src="images/goods/2-1.webp" alt="" loading="lazy">
+                  </button>
+                  <button class="media-thumb" type="button" data-src="images/goods/2-2.jpg">
+                    <img src="images/goods/2-2.jpg" alt="" loading="lazy">
+                  </button>
+                  <button class="media-thumb" type="button" data-src="images/goods/2-3.jpg">
+                    <img src="images/goods/2-3.jpg" alt="" loading="lazy">
+                  </button>
+                </div>
+              </div>
+
+              <div class="material-body">
+                <h4>紫檀（したん）</h4>
+                <dl>
+                  <dt>来源</dt>
+                  <dd>東南アジア、中国南部</dd>
+                  <dt>特性</dt>
+                  <dd>重みがあり、耐久性が高い。長期使用に向く。</dd>
+                  <dt>寓意</dt>
+                  <dd>沈着・持続・不動心を象徴。</dd>
+                  <dt>向いている方</dt>
+                  <dd>修行を生活の一部として継続している方。</dd>
+                </dl>
+              </div>
+
+              <aside class="material-meta">
+                <div class="meta-chips">
+                  <span class="chip">重み</span>
+                  <span class="chip">耐久性</span>
+                  <span class="chip">不動心</span>
+                </div>
+                <div class="meta-note">
+                  <b>ひと言</b>
+                  <p>「続ける」ための道具。日々の積み重ねに寄り添う一本。</p>
+                </div>
+              </aside>
+            </article>
+
+          </div>
+        </section>
+
+
+        <!-- ===== 種子 ===== -->
+        <section class="material-group">
+          <h3 class="material-group-title">
+            種子の数珠
+            <span class="group-chip">一点もの</span>
+            <span class="group-chip">自然の揺らぎ</span>
+            <span class="group-chip">継続</span>
+          </h3>
+          <p class="material-group-lead">
+            自然そのものの揺らぎを感じさせ、一珠一珠に表情が宿る素材。
+          </p>
+
+          <div class="material-items">
+
+            <article class="material-item">
+              <div class="feature-media media-stack">
+                <figure class="media-main">
+                  <img src="images/goods/3-1.jpg" alt="星月菩提の数珠" loading="lazy">
+                </figure>
+
+                <div class="media-side">
+                  <button class="media-thumb is-active" type="button" data-src="images/goods/3-1.jpg">
+                    <img src="images/goods/3-1.jpg" alt="" loading="lazy">
+                  </button>
+                  <button class="media-thumb" type="button" data-src="images/goods/3-2.jpg">
+                    <img src="images/goods/3-2.jpg" alt="" loading="lazy">
+                  </button>
+                  <button class="media-thumb" type="button" data-src="images/goods/3-3.jpg">
+                    <img src="images/goods/3-3.jpg" alt="" loading="lazy">
+                  </button>
+                </div>
+              </div>
+
+              <div class="material-body">
+                <h4>星月菩提（せいげつぼだい）</h4>
+                <dl>
+                  <dt>来源</dt>
+                  <dd>東南アジア地域</dd>
+                  <dt>特性</dt>
+                  <dd>斑点模様があり、一点ごとに表情が異なる。</dd>
+                  <dt>寓意</dt>
+                  <dd>覚り（菩提）へ至る長い歩みを象徴。</dd>
+                  <dt>向いている方</dt>
+                  <dd>祈りや念誦を「続ける」ことを大切にしたい方。</dd>
+                </dl>
+              </div>
+
+              <aside class="material-meta">
+                <div class="meta-chips">
+                  <span class="chip">一点もの感</span>
+                  <span class="chip">自然</span>
+                  <span class="chip">継続</span>
+                </div>
+                <div class="meta-note">
+                  <b>ひと言</b>
+                  <p>一珠の表情に気づくたび、今この瞬間へ意識が戻る。</p>
+                </div>
+              </aside>
+            </article>
+
+          </div>
+        </section>
+
+
+        <!-- ===== 石 ===== -->
+        <section class="material-group">
+          <h3 class="material-group-title">
+            石の数珠
+            <span class="group-chip">場を整える</span>
+            <span class="group-chip">透明感</span>
+            <span class="group-chip">儀礼感</span>
+          </h3>
+          <p class="material-group-lead">
+            重みと冷静さを持ち、場の空気を引き締める素材。
+          </p>
+
+          <div class="material-items">
+
+            <article class="material-item">
+              <div class="feature-media media-stack">
+                <figure class="media-main">
+                  <img src="images/goods/4-1.webp" alt="石の数珠ブレスレット" loading="lazy">
+                </figure>
+
+                <div class="media-side">
+                  <button class="media-thumb is-active" type="button" data-src="images/goods/4-1.webp">
+                    <img src="images/goods/4-1.webp" alt="" loading="lazy">
+                  </button>
+                  <button class="media-thumb" type="button" data-src="images/goods/4-2.webp">
+                    <img src="images/goods/4-2.webp" alt="" loading="lazy">
+                  </button>
+                  <button class="media-thumb" type="button" data-src="images/goods/4-3.webp">
+                    <img src="images/goods/4-3.webp" alt="" loading="lazy">
+                  </button>
+                </div>
+              </div>
+
+              <div class="material-body">
+                <h4>瑠璃（るり｜ラピスラズリ）</h4>
+                <dl>
+                  <dt>来源</dt>
+                  <dd>中央アジア</dd>
+                  <dt>特性</dt>
+                  <dd>深い青色と重み。光で表情が変わる。</dd>
+                  <dt>寓意</dt>
+                  <dd>智慧・真理・場を整える象徴。</dd>
+                  <dt>向いている方</dt>
+                  <dd>儀礼性や空間の静けさを大切にしたい方。</dd>
+                </dl>
+              </div>
+
+              <aside class="material-meta">
+                <div class="meta-chips">
+                  <span class="chip">重み</span>
+                  <span class="chip">静けさ</span>
+                  <span class="chip">場の印象</span>
+                </div>
+                <div class="meta-note">
+                  <b>ひと言</b>
+                  <p>触れた瞬間に「戻る」。雑念をほどき、場を整える。</p>
+                </div>
+              </aside>
+            </article>
+
+          </div>
+        </section>
+
       </div>
     </section>
+
 
     <!-- Counts -->
     <section class="goods-section" id="counts">
@@ -482,7 +688,10 @@
     <div class="footer-hero-inner">
       <!-- 顶部：Logo -->
       <header class="footer-hero-top">
-        <div class="footer-logo"><img src="images/logo-main.png" alt="UnkyoTravel"></div>
+        <div class="footer-logo">
+          <a href="index.html" aria-label="トップページへ戻る">
+            <img src="images/logo-main.png" alt="UnkyoTravel"></a>
+        </div>
       </header>
 
       <div class="footer-hero-center">
