@@ -171,6 +171,146 @@
   display: block;
 }
 
+/* ===== Photo Wall ===== */
+.wall-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 18px 0 18px;
+}
+
+.wall-filter-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.wall-filter-label {
+  font-size: 13px;
+  color: rgba(0, 0, 0, .55);
+  margin-right: 4px;
+}
+
+.wall-tab {
+  border: 1px solid rgba(0, 0, 0, .12);
+  background: #fff;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.wall-tab.is-active {
+  border-color: rgba(0, 0, 0, .98);
+}
+
+.photo-wall {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+}
+
+.wall-item {
+  position: relative;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #eee;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, .06);
+  grid-column: span 4;
+  height: 220px;
+}
+
+.wall-item.is-hidden {
+  display: none;
+}
+
+.wall-item--wide {
+  grid-column: span 8;
+}
+
+.wall-item--large {
+  grid-column: span 6;
+  height: 260px;
+}
+
+.wall-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform .5s ease, filter .5s ease;
+}
+
+.wall-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, .55) 100%);
+  opacity: .9;
+  pointer-events: none;
+}
+
+.wall-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  background: rgba(255, 255, 255, .92);
+  border: 1px solid rgba(0, 0, 0, .10);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+.wall-cap {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 2;
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.wall-item:hover img {
+  transform: scale(1.06);
+  filter: contrast(1.02);
+}
+
+/* filter hidden */
+.wall-item.is-hidden {
+  display: none;
+}
+
+/* responsive */
+@media (max-width: 1024px) {
+  .wall-item {
+    grid-column: span 6;
+  }
+
+  .wall-item--wide {
+    grid-column: span 12;
+  }
+
+  .wall-item--large {
+    grid-column: span 12;
+    height: 260px;
+  }
+}
+
+@media (max-width: 640px) {
+  .wall-item {
+    grid-column: span 12;
+    height: 220px;
+  }
+}
+
+
 /* ===== Materials Detail ===== */
 
 .material-group {

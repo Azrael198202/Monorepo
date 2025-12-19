@@ -43,19 +43,23 @@
   };
 
   /* =========================
-   * 2) Lightbox (data-lightbox)
-   * ========================= */
+ * 2) Lightbox
+ *   A) data-lightbox-current : 打开当前 media-main 的 src
+ *   B) data-lightbox="..."    : 打开指定 src（照片墙等）
+ * ========================= */
   const initLightbox = () => {
     const lightbox = $("#lightbox");
     const lightboxImg = $("#lightboxImg");
     const lightboxClose = $("#lightboxClose");
+    const lightboxCap = $("#lightboxCap"); // 可选：如果没有这个元素也不报错
 
     if (!lightbox || !lightboxImg) return;
 
-    const open = (src, alt) => {
+    const open = (src, alt, cap) => {
       if (!src) return;
       lightboxImg.src = src;
       lightboxImg.alt = alt || "";
+      if (lightboxCap) lightboxCap.textContent = cap || "";
       lightbox.classList.add("is-open");
       lightbox.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
@@ -65,26 +69,38 @@
       lightbox.classList.remove("is-open");
       lightbox.setAttribute("aria-hidden", "true");
       lightboxImg.src = "";
+      lightboxImg.alt = "";
+      if (lightboxCap) lightboxCap.textContent = "";
       document.body.style.overflow = "";
     };
 
-    // click to open
-    // 打开「当前显示的主图」
+    // ✅ click to open (两种入口都支持)
     document.addEventListener("click", (e) => {
+      // B) data-lightbox="..."
+      const fixed = e.target.closest("[data-lightbox]");
+      if (fixed) {
+        const src = fixed.getAttribute("data-lightbox");
+        if (!src) return;
+        const img = fixed.querySelector("img");
+        const cap = fixed.getAttribute("data-caption") || "";
+        open(src, img ? img.alt : "", cap);
+        return;
+      }
+
+      // A) data-lightbox-current（当前主图）
       const btn = e.target.closest("[data-lightbox-current]");
       if (!btn) return;
 
-      // 向上找到对应的 media 容器
       const media = btn.closest(".feature-media");
       if (!media) return;
 
-      // 取当前主图
       const mainImg = media.querySelector(".media-main img");
       if (!mainImg || !mainImg.src) return;
 
-      open(mainImg.src, mainImg.alt || "");
+      // 如果你希望 caption 用当前缩略图的说明，也可以从 data-caption 拿
+      const cap = btn.getAttribute("data-caption") || "";
+      open(mainImg.src, mainImg.alt || "", cap);
     });
-
 
     // close buttons
     if (lightboxClose) lightboxClose.addEventListener("click", close);
@@ -99,6 +115,7 @@
       if (e.key === "Escape") close();
     });
   };
+
 
   /* =========================
    * 3) Material Slider (data-slider)
@@ -173,6 +190,56 @@
   };
 
   /* =========================
+ * Photo Wall Filter (2D)
+ * 素材 × 視点
+ * ========================= */
+  const initPhotoWallFilter = () => {
+    const tabs = document.querySelectorAll(".wall-tab[data-wall-filter]");
+    const items = document.querySelectorAll("[data-wall-item]");
+    if (!tabs.length || !items.length) return;
+
+    const state = {
+      material: "all",
+      view: "all"
+    };
+
+    const apply = () => {
+      items.forEach((it) => {
+        const m = it.getAttribute("data-material") || "all";
+        const v = it.getAttribute("data-view") || "all";
+
+        const okMaterial = (state.material === "all") || (m === state.material);
+        const okView = (state.view === "all") || (v === state.view);
+
+        it.classList.toggle("is-hidden", !(okMaterial && okView));
+      });
+    };
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const group = tab.getAttribute("data-filter-group");
+        const value = tab.getAttribute("data-wall-filter");
+
+        // 同一 group 内切换 active
+        tabs.forEach((t) => {
+          if (t.getAttribute("data-filter-group") === group) {
+            t.classList.remove("is-active");
+          }
+        });
+        tab.classList.add("is-active");
+
+        state[group] = value;
+        apply();
+      });
+    });
+
+    // 初期表示
+    apply();
+  };
+
+
+
+  /* =========================
    * Boot
    * ========================= */
   document.addEventListener("DOMContentLoaded", () => {
@@ -180,5 +247,6 @@
     initLightbox();
     initMaterialSliders();
     initFeatureMediaSwitch();
+    initPhotoWallFilter();
   });
 })();

@@ -187,37 +187,73 @@
     </section>
 
     <!-- Gallery -->
-    <section class="goods-section" id="gallery">
+    <section class="goods-section goods-gray" id="gallery">
       <div class="container">
         <header class="goods-head">
-          <h2 class="goods-h2">写真</h2>
-          <p class="goods-sub">質感・珠の表情・置いたときの静けさを伝えるための参考写真です。</p>
+          <h2 class="goods-h2">写真ギャラリー</h2>
+          <p class="goods-sub">
+            ここは「売るため」ではなく、質感・珠の表情・場の静けさを伝えるための写真群です。<br>
+            気になる一枚から、素材と仏縁の物語へ入ってください。
+          </p>
         </header>
 
-        <div class="goods-gallery">
-          <figure class="goods-figure">
-            <button class="imgbtn" type="button" data-lightbox="./images/goods/p1.jpg" aria-label="拡大表示">
-              <img src="./images/goods/p1.jpg" alt="菩提子系の数珠ブレスレット（参考）">
-            </button>
-            <figcaption>種子系：一珠ごとの表情が異なるタイプ</figcaption>
-          </figure>
+        <!-- filter -->
+        <div class="wall-filter" aria-label="gallery filter">
 
-          <figure class="goods-figure">
-            <button class="imgbtn" type="button" data-lightbox="./images/goods/p2.jpg" aria-label="拡大表示">
-              <img src="./images/goods/p2.jpg" alt="木の数珠ブレスレット（参考）">
-            </button>
-            <figcaption>木：手に馴染む、静かな艶が育つタイプ</figcaption>
-          </figure>
+          <!-- 素材 -->
+          <div class="wall-filter-row" role="tablist" aria-label="素材">
+            <span class="wall-filter-label">素材：</span>
+            <button class="wall-tab is-active" type="button" data-filter-group="material"
+              data-wall-filter="all">すべて</button>
+            <button class="wall-tab" type="button" data-filter-group="material" data-wall-filter="wood">木</button>
+            <button class="wall-tab" type="button" data-filter-group="material" data-wall-filter="seed">種子</button>
+            <button class="wall-tab" type="button" data-filter-group="material" data-wall-filter="stone">石</button>
+          </div>
 
-          <figure class="goods-figure goods-figure-wide">
-            <button class="imgbtn" type="button" data-lightbox="./images/goods/hero.jpg" aria-label="拡大表示">
-              <img src="./images/goods/hero.jpg" alt="数珠と香のある空間（参考）">
-            </button>
-            <figcaption>場：香・光・静寂の中で、所作が深まる</figcaption>
-          </figure>
+          <!-- 視点 -->
+          <div class="wall-filter-row" role="tablist" aria-label="視点">
+            <span class="wall-filter-label">視点：</span>
+            <button class="wall-tab is-active" type="button" data-filter-group="view"
+              data-wall-filter="all">すべて</button>
+            <button class="wall-tab" type="button" data-filter-group="view" data-wall-filter="object">本体</button>
+            <button class="wall-tab" type="button" data-filter-group="view" data-wall-filter="wear">着用</button>
+            <button class="wall-tab" type="button" data-filter-group="view" data-wall-filter="scene">修行の場</button>
+          </div>
+
+        </div>
+
+
+        <!-- wall -->
+        <div class="photo-wall" id="photoWall">
+
+          <!-- item -->
+          <button class="wall-item wall-item--large" type="button" data-wall-item data-material="seed" data-view="object" 
+          data-lightbox="images/goods/p1.jpg" data-caption="種子系：一珠ごとの表情が異なるタイプ">
+            <img src="images/goods/p1.jpg" alt="星月菩提の数珠（種子）" loading="lazy">
+            <span class="wall-tag">種子</span>
+            <span class="wall-cap">一珠ごとの表情</span>
+          </button>
+
+          <button class="wall-item" type="button" data-wall-item data-material="wood" data-view="wear"
+            data-lightbox="images/goods/p2.jpg" data-caption="木：手に馴染み、静かな艶が育つタイプ">
+            <img src="images/goods/p2.jpg" alt="木の数珠ブレスレット" loading="lazy">
+            <span class="wall-tag">木</span>
+            <span class="wall-cap">静かな艶</span>
+          </button>
+
+          <button class="wall-item" type="button" data-wall-item data-material="stone" data-view="scene" data-lightbox="images/goods/p2.jpg"
+            data-caption="石：重みと冷静さで、意識を引き戻すタイプ">
+            <img src="images/goods/4-1.webp" alt="石の数珠ブレスレット" loading="lazy">
+            <span class="wall-tag">石</span>
+            <span class="wall-cap">意識を戻す</span>
+          </button>
+
+          <!-- 继续追加更多 item（同结构） -->
+
         </div>
       </div>
     </section>
+
 
     <!-- ===== Materials (UPDATED) ===== -->
     <section class="goods-section goods-gray" id="materials">
@@ -721,6 +757,7 @@
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <button class="lightbox-close" type="button" id="lightboxClose" aria-label="Close">×</button>
     <img class="lightbox-img" id="lightboxImg" alt="">
+
   </div>
 
   <script src="script.js"></script>
