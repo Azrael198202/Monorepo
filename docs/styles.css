@@ -2128,6 +2128,8 @@ body.menu-open {
 
 /* 参照按钮 */
 .exp-btn {
+  display: inline-flex;
+  position: static; 
   margin-top: 22px;
   padding: 12px 36px;
   border-radius: 999px;
@@ -2157,10 +2159,6 @@ body.menu-open {
     width: 100%;
   }
 }
-
-
-
-
 
 
 /* Features Section */
